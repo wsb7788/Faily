@@ -1,4 +1,4 @@
-package com.project.Faily
+package com.project.faily
 
 import org.junit.Test
 
