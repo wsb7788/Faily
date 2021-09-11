@@ -16,6 +16,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.project.faily.ApplicationClass
 import com.project.faily.R
+import com.project.faily.ui.login.LoginActivity
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -50,7 +51,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     @SuppressLint("ServiceCast")
     private fun sendNotification(title: String, body: String) {
         val random = (System.currentTimeMillis() / 1000).toInt()
-        val intent = Intent(this, SplashActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this, random, intent,
@@ -61,7 +62,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val channelId = "댓글 및 공지사항"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-        val micon = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.logo)
+        val micon = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.common_full_open_on_phone)
         try {
 
 
@@ -70,7 +71,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setContentText(body)
                 .setStyle(NotificationCompat.BigTextStyle().bigText(body))
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.noti_icon)
+                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
                 .setLargeIcon(micon)
                 //.setColor(Color.parseColor("#ff0000"))
                 .setSound(defaultSoundUri)

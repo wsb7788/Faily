@@ -1,4 +1,4 @@
-package com.project.teamsb.di
+package com.project.faily.di
 
 
 import org.koin.core.module.Module

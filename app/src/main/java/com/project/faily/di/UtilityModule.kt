@@ -1,4 +1,4 @@
-package com.project.teamsb.di
+package com.project.faily.di
 
 import com.project.faily.util.SharedPreferencesManager
 import org.koin.android.ext.koin.androidContext

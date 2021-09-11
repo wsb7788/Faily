@@ -1,10 +1,10 @@
 package com.project.faily
 
 import android.app.Application
-import com.project.teamsb.di.networkModule
-import com.project.teamsb.di.repositoryModule
-import com.project.teamsb.di.utilityModule
-import com.project.teamsb.di.viewModelModule
+import com.project.faily.di.networkModule
+import com.project.faily.di.repositoryModule
+import com.project.faily.di.utilityModule
+import com.project.faily.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 
