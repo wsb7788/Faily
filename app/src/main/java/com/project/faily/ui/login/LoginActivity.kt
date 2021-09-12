@@ -19,15 +19,12 @@ import com.project.faily.databinding.ActivityLoginBinding
 import com.project.teamsb.ui.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginActivity:BaseActivity(),LoginListener, View.OnLongClickListener, View.OnDragListener{
+class LoginActivity:BaseActivity(),LoginListener{
     private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModel()
 
 
-     var x:Float=0f
-    var y:Float=0f
-    var dx:Float=0f
-    var dy:Float=0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
@@ -36,77 +33,7 @@ class LoginActivity:BaseActivity(),LoginListener, View.OnLongClickListener, View
         viewModel.loginListener = this
 
 
-        binding.box.setOnLongClickListener(this)
-        binding.ll.setOnDragListener(this)
 
-    }
-
-/*    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-
-
-        when(event!!.actionMasked){
-            MotionEvent.ACTION_DOWN ->{
-                y = v!!.y - event.y
-            }
-            MotionEvent.ACTION_MOVE ->{
-                binding.box.animate()
-                    .y(event.y + y)
-                    .setDuration(0)
-                    .start()
-               *//*dy = event.y - y
-                v!!.y = v.y + dy
-                y=event.y*//*
-
-            }
-            MotionEvent.ACTION_UP ->{
-
-            }
-        }
-        return super.onTouchEvent(event)
-    }*/
-
-    override fun onLongClick(v: View?): Boolean {
-        val clipText = "This it our ClipData text"
-        val item = ClipData.Item(clipText)
-        val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
-        val data = ClipData(clipText,mimeTypes,item)
-
-        val dragShadowBuilder = View.DragShadowBuilder(binding.box)
-        binding.ll.visibility = VISIBLE
-        binding.box.visibility = INVISIBLE
-        binding.box.startDragAndDrop(data,dragShadowBuilder,binding.ll,0)
-
-
-        return true
-    }
-
-    override fun onDrag(v: View?, event: DragEvent?): Boolean {
-        when(event!!.action){
-            DragEvent.ACTION_DRAG_STARTED ->{
-                event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-            }
-            DragEvent.ACTION_DRAG_ENTERED->{
-                v!!.invalidate()
-            }
-            DragEvent.ACTION_DRAG_LOCATION -> {}
-            DragEvent.ACTION_DRAG_EXITED ->{
-                v!!.invalidate()
-
-            }
-            DragEvent.ACTION_DROP ->{
-                Toast.makeText(this,"범위 안에 들어옴",Toast.LENGTH_SHORT).show()
-
-            }
-            DragEvent.ACTION_DRAG_ENDED ->{
-                binding.ll.visibility = INVISIBLE
-                binding.box.visibility = VISIBLE
-                v!!.invalidate()
-
-            }
-        }
-
-
-        return true
     }
 
 
