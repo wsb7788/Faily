@@ -72,8 +72,10 @@ class LoginActivity:BaseActivity(),LoginListener, View.OnLongClickListener, View
         val data = ClipData(clipText,mimeTypes,item)
 
         val dragShadowBuilder = View.DragShadowBuilder(binding.box)
-        binding.box.startDragAndDrop(data,dragShadowBuilder,binding.ll,0)
         binding.ll.visibility = VISIBLE
+        binding.box.visibility = INVISIBLE
+        binding.box.startDragAndDrop(data,dragShadowBuilder,binding.ll,0)
+
 
         return true
     }
@@ -97,10 +99,13 @@ class LoginActivity:BaseActivity(),LoginListener, View.OnLongClickListener, View
             }
             DragEvent.ACTION_DRAG_ENDED ->{
                 binding.ll.visibility = INVISIBLE
+                binding.box.visibility = VISIBLE
                 v!!.invalidate()
 
             }
         }
+
+
         return true
     }
 
