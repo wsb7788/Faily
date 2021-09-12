@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -34,9 +36,9 @@ class LoginActivity:BaseActivity(),LoginListener, View.OnLongClickListener, View
         viewModel.loginListener = this
 
 
-        //binding.box.setOnTouchListener(this)
         binding.box.setOnLongClickListener(this)
-        binding.box.setOnDragListener(this)
+        binding.ll.setOnDragListener(this)
+
     }
 
 /*    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -70,9 +72,9 @@ class LoginActivity:BaseActivity(),LoginListener, View.OnLongClickListener, View
         val data = ClipData(clipText,mimeTypes,item)
 
         val dragShadowBuilder = View.DragShadowBuilder(binding.box)
-        binding.box.startDragAndDrop(data,dragShadowBuilder,binding.box,0)
+        binding.box.startDragAndDrop(data,dragShadowBuilder,binding.ll,0)
+        binding.ll.visibility = VISIBLE
 
-        //binding.box.visibility = View.INVISIBLE
         return true
     }
 
@@ -83,32 +85,21 @@ class LoginActivity:BaseActivity(),LoginListener, View.OnLongClickListener, View
             }
             DragEvent.ACTION_DRAG_ENTERED->{
                 v!!.invalidate()
-                true
             }
-            DragEvent.ACTION_DRAG_LOCATION -> true
+            DragEvent.ACTION_DRAG_LOCATION -> {}
             DragEvent.ACTION_DRAG_EXITED ->{
                 v!!.invalidate()
-                true
+
             }
             DragEvent.ACTION_DROP ->{
-                Toast.makeText(this,"dragData",Toast.LENGTH_SHORT).show()
-                /*val item = event.clipData.getItemAt(0)
-                val dragData = item.text
-                Toast.makeText(this,dragData,Toast.LENGTH_SHORT).show()
-                v!!.invalidate()
-                val vv = event.localState as View
-                val owner = vv.parent as ViewGroup
-                //owner.removeView(vv)
-                val destination = v as LinearLayout
-                //destination.addView(vv)
-                //vv.visibility = View.VISIBLE*/
-                true
+                Toast.makeText(this,"범위 안에 들어옴",Toast.LENGTH_SHORT).show()
+
             }
             DragEvent.ACTION_DRAG_ENDED ->{
+                binding.ll.visibility = INVISIBLE
                 v!!.invalidate()
-                true
+
             }
-            else -> false
         }
         return true
     }
