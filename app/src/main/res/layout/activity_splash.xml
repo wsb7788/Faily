@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.project.faily.ui.login.LoginViewModel" />
+            type="com.project.faily.ui.splash.SplashViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,20 +17,20 @@
             android:layout_height="match_parent"
             android:src="@drawable/login_background"
             android:scaleType="centerCrop"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="31dp"
             android:text="가족과 매일\n함께하세요."
             android:textColor="@color/grayscale_1"
             android:textSize="24sp"
-
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
-            app:layout_constraintStart_toStartOf="@+id/btn_sign_up" />
+
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="31dp"/>
         <Button
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:text="이메일로 가입하기"
@@ -40,7 +40,7 @@
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent="0.8"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="44dp"/>
 
         <TextView
@@ -52,13 +52,13 @@
             android:textSize="12sp"
             android:textColor="#282732"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_login"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/btn_login"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="로그인"

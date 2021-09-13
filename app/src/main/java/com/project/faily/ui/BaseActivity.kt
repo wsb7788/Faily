@@ -1,4 +1,4 @@
-package com.project.teamsb.ui
+package com.project.faily.ui
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
