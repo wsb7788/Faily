@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.project.faily.ui.email_auth.EmailAuthViewModel" />
+            type="com.project.faily.ui.sign_up.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

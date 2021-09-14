@@ -1,28 +1,30 @@
-package com.project.faily.ui.email_auth
+package com.project.faily.ui.reset_password
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.project.faily.R
-import com.project.faily.data.remote.email_auth.EmailAuthListener
 import com.project.faily.data.remote.login.LoginListener
+import com.project.faily.data.remote.reset_password.ResetPasswordListener
+import com.project.faily.data.remote.sign_in.SignInListener
 import com.project.faily.data.remote.sign_up.SignUpListener
-import com.project.faily.databinding.ActivityEmailAuthBinding
+import com.project.faily.databinding.ActivityResetPasswordBinding
+import com.project.faily.databinding.ActivitySignInBinding
 import com.project.faily.databinding.ActivitySignUpBinding
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.sign_up.SignUpViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class EmailAuthActivity : BaseActivity(), EmailAuthListener {
-    private lateinit var binding: ActivityEmailAuthBinding
+class ResetPasswordActivity : BaseActivity(), ResetPasswordListener {
+    private lateinit var binding: ActivityResetPasswordBinding
     private val viewModel: SignUpViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_email_auth)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_reset_password)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        viewModel.emailAuthListener = this
+        viewModel.resetPasswordListener = this
 
 
     }

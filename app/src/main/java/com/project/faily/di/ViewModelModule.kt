@@ -1,6 +1,5 @@
 package com.project.faily.di
 
-import com.project.faily.ui.email_auth.EmailAuthViewModel
 import com.project.faily.ui.login.LoginViewModel
 import com.project.faily.ui.sign_in.SignInViewModel
 import com.project.faily.ui.sign_up.SignUpViewModel
@@ -14,6 +13,5 @@ val viewModelModule = module {
     viewModel { LoginViewModel() }
     viewModel { SplashViewModel() }
     viewModel { SignUpViewModel() }
-    viewModel { EmailAuthViewModel() }
     viewModel { SignInViewModel() }
 }
