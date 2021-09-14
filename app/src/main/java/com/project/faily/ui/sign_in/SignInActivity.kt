@@ -23,9 +23,20 @@ class SignInActivity : BaseActivity(), SignInListener {
         binding.viewModel = viewModel
         viewModel.signinListener = this
 
+        idObserve()
         pwShowObserve()
         binding.ivPassword.setOnClickListener(this)
         binding.ivEmail.setOnClickListener(this)
+    }
+
+    private fun idObserve() {
+        viewModel.id.observe(this,{
+            if(viewModel.id.value.isNullOrEmpty()){
+                binding.ivEmail.setImageResource(R.drawable.ic_email_delete_off)
+                return@observe
+            }
+            binding.ivEmail.setImageResource(R.drawable.ic_email_delete_on)
+        })
     }
 
     private fun pwShowObserve() {
@@ -38,13 +49,7 @@ class SignInActivity : BaseActivity(), SignInListener {
             binding.ivPassword.setImageResource(R.drawable.ic_password_see_off)
             binding.etPassword.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
         })
-        viewModel.id.observe(this,{
-            if(viewModel.id.value.isNullOrEmpty()){
-                binding.ivEmail.setImageResource(R.drawable.ic_email_delete_off)
-                return@observe
-            }
-            binding.ivEmail.setImageResource(R.drawable.ic_email_delete_on)
-        })
+
     }
 
     override fun onClick(v: View?) {
