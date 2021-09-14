@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.project.faily.ui.email_auth.EmailAuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/status_color">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_background" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일로 가입하기"
+                android:textColor="@color/dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="11dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="이메일로 인증번호를 보냈습니다.\n인증번호를 입력해주세요."
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/et_email_code_1"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/grayscale_1"
+            android:layout_marginBottom="40dp"/>
+
+
+        <EditText
+            android:id="@+id/et_email_code_1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="80dp"
+            android:nextFocusDown="@id/et_email_code_2"
+            android:background="@drawable/email_auth_circle"
+            android:gravity="center"
+            android:singleLine="true"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/grayscale_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toStartOf="@+id/et_email_code_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+
+        <EditText
+            android:id="@+id/et_email_code_2"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/email_auth_circle"
+            android:gravity="center"
+            android:inputType="number"
+            android:nextFocusDown="@id/et_email_code_3"
+            android:maxLength="1"
+            android:textColor="@color/grayscale_1"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toStartOf="@+id/et_email_code_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_email_code_1" />
+
+        <EditText
+            android:id="@+id/et_email_code_3"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="80dp"
+            android:nextFocusDown="@id/et_email_code_4"
+            android:background="@drawable/email_auth_circle"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/grayscale_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toStartOf="@+id/et_email_code_4"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/et_email_code_2" />
+
+        <EditText
+            android:id="@+id/et_email_code_4"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/email_auth_circle"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/grayscale_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_email_code_3" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="78dp"
+            android:backgroundTint="@color/secondary_pink"
+            android:paddingVertical="14dp"
+            android:text="인증번호 확인"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
