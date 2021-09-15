@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="이메일"
+                android:text="@={viewModel.email}"
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@id/et_password"
                 android:padding="0dp"
@@ -111,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="비밀번호"
+                android:text="@={viewModel.pw}"
                 android:inputType="textPassword"
                 android:nextFocusDown="@id/et_password_check"
                 android:padding="0dp"
@@ -153,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="비밀번호 확인"
+                android:text="@={viewModel.pwCheck}"
                 android:inputType="textPassword"
                 android:padding="0dp"
                 android:singleLine="true"
@@ -176,15 +179,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <ImageView
+        <CheckBox
             android:id="@+id/cb_check_all"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginBottom="24dp"
-            android:src="@drawable/ic_unchecked_box"
             android:layout_marginStart="7dp"
             app:layout_constraintBottom_toTopOf="@id/line1"
-            app:layout_constraintStart_toStartOf="@+id/cb_service" />
+            app:layout_constraintStart_toStartOf="@+id/cb_service"
+            android:button="@null"
+            android:onClick="onAgreeClicked"
+            android:background="@drawable/ic_unchecked_box"
+            android:checked="@={viewModel.allAgree}"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -208,12 +214,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_percent="0.8"/>
 
-        <ImageView
+        <CheckBox
             android:id="@+id/cb_service"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:button="@null"
+            android:checked="@={viewModel.serviceAgree}"
+            android:onClick="onAgreeClicked"
+            android:background="@drawable/ic_unchecked"
             android:layout_marginBottom="12dp"
-            android:src="@drawable/ic_unchecked"
             app:layout_constraintBottom_toTopOf="@+id/cb_personal"
             app:layout_constraintStart_toStartOf="@+id/cb_personal" />
 
@@ -240,12 +249,15 @@
             app:layout_constraintTop_toTopOf="@+id/textView5" />
 
 
-        <ImageView
+        <CheckBox
             android:id="@+id/cb_personal"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:background="@drawable/ic_unchecked"
+            android:button="@null"
+            android:checked="@={viewModel.personalAgree}"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_unchecked"
+            android:onClick="onAgreeClicked"
             android:layout_marginStart="7dp"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintStart_toStartOf="@+id/button" />
