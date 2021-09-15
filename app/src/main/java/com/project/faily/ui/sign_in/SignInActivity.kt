@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.text.SpannableStringBuilder
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.project.faily.R
 import com.project.faily.data.remote.sign_in.SignInListener
@@ -27,11 +28,12 @@ class SignInActivity : BaseActivity(), SignInListener {
         pwShowObserve()
         binding.ivPassword.setOnClickListener(this)
         binding.ivEmail.setOnClickListener(this)
+        binding.button.setOnClickListener(this)
     }
 
     private fun idObserve() {
-        viewModel.id.observe(this,{
-            if(viewModel.id.value.isNullOrEmpty()){
+        viewModel.email.observe(this,{
+            if(viewModel.email.value.isNullOrEmpty()){
                 binding.ivEmail.setImageResource(R.drawable.ic_email_delete_off)
                 return@observe
             }
@@ -54,16 +56,17 @@ class SignInActivity : BaseActivity(), SignInListener {
 
     override fun onClick(v: View?) {
         when(v){
-            binding.ivPassword->{
-                viewModel.showPw()
-            }
-            binding.ivEmail ->{
-                viewModel.emailBlankCheck()
-            }
+            binding.ivPassword-> viewModel.showPw()
+            binding.ivEmail -> viewModel.emailBlankCheck()
+            binding.button -> viewModel.checkUser()
         }
     }
 
     override fun clearEmail(editable: SpannableStringBuilder) {
         binding.etEmail.text = editable
+    }
+
+    override fun onCheckUserFailure(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 }

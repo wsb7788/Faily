@@ -8,13 +8,14 @@ import android.text.SpannableStringBuilder
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.faily.data.remote.sign_in.SignInListener
+import java.util.regex.Pattern
 
 class SignInViewModel: ViewModel(){
 
 
     var signinListener: SignInListener? = null
 
-    val id: MutableLiveData<String> by lazy {
+    val email: MutableLiveData<String> by lazy {
         MutableLiveData<String>().apply {
             postValue("")
         }
@@ -42,10 +43,30 @@ class SignInViewModel: ViewModel(){
     }
 
     fun emailBlankCheck() {
-        if(!id.value.isNullOrEmpty()){
+        if(!email.value.isNullOrEmpty()){
             val editable = SpannableStringBuilder("")
             signinListener!!.clearEmail(editable)
         }
 
+    }
+
+    fun checkUser() {
+        val _email = email.value.toString()
+        val _pw = pw.value.toString()
+
+        if(_email.isEmpty()){
+            signinListener!!.onCheckUserFailure( "이메일 주소를 입력해주세요.")
+            return
+        }
+
+        if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.0-]+\\.[a-zA-Z]{2,6}\$", _email)){
+            signinListener!!.onCheckUserFailure( "정확한 이메일 주소를 입력해주세요.")
+            return
+        }
+
+        if(_pw.isEmpty()){
+            signinListener!!.onCheckUserFailure( "비밀번호를 입력해주세요.")
+            return
+        }
     }
 }

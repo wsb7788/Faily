@@ -4,6 +4,7 @@ import android.text.SpannableStringBuilder
 
 interface SignInListener {
     fun clearEmail(editable: SpannableStringBuilder)
+    fun onCheckUserFailure( message: String)
 
 
 }

@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="이메일"
-                android:text="@={viewModel.id}"
+                android:text="@={viewModel.email}"
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@id/et_password"
                 android:padding="0dp"
