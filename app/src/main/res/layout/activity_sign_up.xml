@@ -203,15 +203,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <NumberPicker
+        <DatePicker
             android:id="@+id/sp_birth"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintWidth_percent="0.8"
-            app:layout_constraintStart_toStartOf="@id/button"
-            app:layout_constraintBottom_toTopOf="@id/button"
+            style="@android:style/Widget.DeviceDefault.DatePicker"
 
-            android:datePickerMode="spinner"/>
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:startYear="1950"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintStart_toStartOf="@id/button"
+            app:layout_constraintWidth_percent="0.8" />
 
         <Button
             android:id="@+id/button"
@@ -225,6 +228,15 @@
             android:paddingVertical="14dp"
             android:layout_marginBottom="78dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:entries="@array/category"
+            app:layout_constraintBottom_toTopOf="@+id/line1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

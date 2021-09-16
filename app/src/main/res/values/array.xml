@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category" >
+        <item>선택</item>
+        <item>배달</item>
+        <item>택배</item>
+        <item>택시</item>
+        <item>룸메</item>
+    </string-array>
+
+</resources>
