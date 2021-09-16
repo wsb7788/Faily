@@ -27,24 +27,14 @@ class SignUpActivity : BaseActivity(), SignUpListener {
         viewModel.signUpListener = this
 
 
-        idObserve()
-        pwShowObserve()
-        pwShowCheckObserve()
-
         binding.btnSeePersonal.setOnClickListener(this)
         binding.btnSeeService.setOnClickListener(this)
         binding.button.setOnClickListener(this)
-        binding.ivPasswordCheck.setOnClickListener(this)
-        binding.ivPassword.setOnClickListener(this)
-        binding.ivEmail.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
         when(v) {
-            binding.ivEmail -> viewModel.emailBlankCheck()
-            binding.ivPassword -> viewModel.showPw()
-            binding.ivPasswordCheck -> viewModel.showPwCheck()
             binding.button -> viewModel.checkUser()
             binding.btnSeePersonal -> {
             }
@@ -53,43 +43,10 @@ class SignUpActivity : BaseActivity(), SignUpListener {
         }
     }
 
-    private fun idObserve() {
-        viewModel.email.observe(this,{
-            if(viewModel.email.value.isNullOrEmpty()){
-                binding.ivEmail.setImageResource(R.drawable.ic_email_delete_off)
-                return@observe
-            }
-            binding.ivEmail.setImageResource(R.drawable.ic_email_delete_on)
-        })
-    }
 
-    private fun pwShowObserve() {
-        viewModel.showPw.observe(this, {
-            if(viewModel.showPw.value!!){
-                binding.ivPassword.setImageResource(R.drawable.ic_password_see_on)
-                binding.etPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                return@observe
-            }
-            binding.ivPassword.setImageResource(R.drawable.ic_password_see_off)
-            binding.etPassword.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
-        })
 
-    }
-    private fun pwShowCheckObserve() {
-        viewModel.showPwCheck.observe(this, {
-            if(viewModel.showPwCheck.value!!){
-                binding.ivPasswordCheck.setImageResource(R.drawable.ic_password_see_on)
-                binding.etPasswordCheck.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                return@observe
-            }
-            binding.ivPasswordCheck.setImageResource(R.drawable.ic_password_see_off)
-            binding.etPasswordCheck.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
-        })
-
-    }
-
-    override fun clearEmail(editable: SpannableStringBuilder) {
-        binding.etEmail.text = editable
+    override fun clearName(editable: SpannableStringBuilder) {
+        binding.etName.text = editable
     }
 
     override fun onCheckUserFailure(message: String) {

@@ -23,33 +23,12 @@ class SignUpViewModel: ViewModel(){
     var resetPassword2Listener : ResetPassword2Listener? = null
 
 
-    val email: MutableLiveData<String> by lazy {
+    val name: MutableLiveData<String> by lazy {
         MutableLiveData<String>().apply {
             postValue("")
         }
     }
 
-    val pw: MutableLiveData<String> by lazy {
-        MutableLiveData<String>().apply {
-            postValue("")
-        }
-    }
-
-    val pwCheck: MutableLiveData<String> by lazy {
-        MutableLiveData<String>().apply {
-            postValue("")
-        }
-    }
-    val showPw: MutableLiveData<Boolean> by lazy {
-        MutableLiveData<Boolean>().apply {
-            postValue(false)
-        }
-    }
-    val showPwCheck: MutableLiveData<Boolean> by lazy {
-        MutableLiveData<Boolean>().apply {
-            postValue(false)
-        }
-    }
     val allAgree: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>().apply {
             postValue(false)
@@ -66,38 +45,17 @@ class SignUpViewModel: ViewModel(){
         }
     }
 
-    fun showPw(){
-        showPw.postValue(!showPw.value!!)
-    }
-    fun showPwCheck(){
-        showPwCheck.postValue(!showPwCheck.value!!)
-    }
 
-    fun emailBlankCheck() {
-        if(!email.value.isNullOrEmpty()){
-            val editable = SpannableStringBuilder("")
-            signUpListener!!.clearEmail(editable)
-        }
 
-    }
 
     fun checkUser() {
-        val _email = email.value.toString()
-        val _pw = pw.value.toString()
+        val _name = name.value.toString()
 
-        if(_email.isEmpty()){
-            signUpListener!!.onCheckUserFailure( "이메일 주소를 입력해주세요.")
+
+        if(_name.isEmpty()){
+            signUpListener!!.onCheckUserFailure( "이름을 입력하세요.")
             return
         }
 
-        if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.0-]+\\.[a-zA-Z]{2,6}\$", _email)){
-            signUpListener!!.onCheckUserFailure( "정확한 이메일 주소를 입력해주세요.")
-            return
-        }
-
-        if(_pw.isEmpty()){
-            signUpListener!!.onCheckUserFailure( "비밀번호를 입력해주세요.")
-            return
-        }
     }
 }

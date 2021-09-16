@@ -7,4 +7,6 @@ open class BaseActivity: AppCompatActivity(), View.OnClickListener{
     override fun onClick(v: View?) {
 
     }
+
+
 }

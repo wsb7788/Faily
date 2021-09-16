@@ -4,6 +4,7 @@ import com.project.faily.ui.login.LoginViewModel
 import com.project.faily.ui.permission.PermissionViewModel
 import com.project.faily.ui.sign_in.SignInViewModel
 import com.project.faily.ui.sign_up.SignUpViewModel
+import com.project.faily.ui.sign_up2.SignUp2ViewModel
 import com.project.faily.ui.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 
@@ -16,4 +17,5 @@ val viewModelModule = module {
     viewModel { SignUpViewModel() }
     viewModel { SignInViewModel() }
     viewModel { PermissionViewModel() }
+    viewModel { SignUp2ViewModel() }
 }
