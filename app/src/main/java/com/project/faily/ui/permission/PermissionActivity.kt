@@ -31,6 +31,7 @@ class PermissionActivity : BaseActivity(), PermissionListener {
     override fun onClick(v: View?) {
         when(v){
             binding.button -> onPermissionCheck()
+            //수정필요
         }
     }
 
