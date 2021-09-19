@@ -92,4 +92,7 @@ dependencies {
 
     //tes permission
     implementation("io.github.ParkSangGwon:tedpermission:3.2.3")
+
+    implementation 'com.github.jenly1314:arcseekbar:1.0.3'
+
 }

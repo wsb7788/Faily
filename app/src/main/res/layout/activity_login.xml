@@ -32,10 +32,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
             app:layout_constraintStart_toStartOf="@+id/btn_sign_up" />
-        <ProgressBar
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:circularflow_angles=""
+
 
         <Button
             android:id="@+id/btn_sign_up"

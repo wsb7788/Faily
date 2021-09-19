@@ -1,5 +1,6 @@
 package com.project.faily.di
 
+import com.project.faily.ui.home.HomeViewModel
 import com.project.faily.ui.login.LoginViewModel
 import com.project.faily.ui.permission.PermissionViewModel
 import com.project.faily.ui.sign_in.SignInViewModel
@@ -18,4 +19,5 @@ val viewModelModule = module {
     viewModel { SignInViewModel() }
     viewModel { PermissionViewModel() }
     viewModel { SignUp2ViewModel() }
+    viewModel { HomeViewModel() }
 }

@@ -19,7 +19,8 @@
         <activity android:name=".ui.sign_in.SignInActivity"/>
         <activity android:name=".ui.email_auth.EmailAuthActivity"/>
         <activity android:name=".ui.sign_up2.SignUp2Activity"/>
-        <activity android:name=".ui.sign_up.SignUpActivity">
+        <activity android:name=".ui.sign_up.SignUpActivity"/>
+        <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
