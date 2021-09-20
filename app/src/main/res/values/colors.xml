@@ -25,4 +25,5 @@
     <color name="view_border">#e8e9ea</color>
     <color name="dark">#282732</color>
     <color name="status_color">#FFC4C1</color>
+    <color name="navi_unselected">#FFC4C0</color>
 </resources>
