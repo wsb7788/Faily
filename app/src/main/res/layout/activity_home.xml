@@ -63,21 +63,16 @@
             android:id="@+id/homeasd"
             android:layout_width="200dp"
             android:layout_height="200dp"
-
-
             android:layout_marginTop="148dp"
             app:arcMax="100"
             app:arcNormalColor="@color/white"
-
             app:arcProgress="80"
             app:arcShowLabel="false"
             app:arcShowThumb="false"
             app:arcStartAngle="180"
             app:arcStrokeWidth="40dp"
-
             app:arcSweepAngle="180"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,7 +83,15 @@
             app:layout_constraintBottom_toTopOf="@+id/bnv"
             app:layout_constraintTop_toBottomOf="@+id/cl_toolbar" />
 
-
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/menu_home"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bnv"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:translationZ="10dp"
+            app:layout_constraintStart_toStartOf="parent" />
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnv"
             android:layout_width="match_parent"
@@ -102,14 +105,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/ic_menu_home_button"
-            android:layout_marginBottom="40dp"
-            app:layout_constraintBottom_toBottomOf="@+id/bnv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
