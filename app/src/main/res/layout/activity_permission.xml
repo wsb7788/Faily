@@ -28,7 +28,7 @@
                 android:id="@+id/iv_alert"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/ic_permission_alert"
+                android:src="@drawable/permission_alert"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
