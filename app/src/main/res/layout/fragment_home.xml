@@ -64,11 +64,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_toolbar">
+            app:layout_constraintTop_toBottomOf="@id/cl_toolbar"
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -76,10 +78,28 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+                    <com.king.view.arcseekbar.ArcSeekBar
+                        android:id="@+id/family_graph"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:translationZ="100dp"
+                        app:arcMax="100"
+                        app:arcNormalColor="@color/white"
+                        app:arcProgress="80"
+                        app:arcShowLabel="false"
+                        app:arcShowThumb="false"
+                        app:arcStartAngle="180"
+                        app:arcStrokeWidth="50dp"
+                        app:arcSweepAngle="180"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_family_graph"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
+                        android:elevation="5dp"
+                        android:layout_marginHorizontal="5dp"
                         android:layout_marginTop="30dp"
                         android:background="@drawable/box_basic"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -110,29 +130,28 @@
                             android:textColor="@color/grayscale_1"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                    <com.king.view.arcseekbar.ArcSeekBar
-                        android:id="@+id/family_graph"
-                        android:layout_width="250dp"
-                        android:layout_height="250dp"
-                        app:arcMax="100"
-                        app:arcNormalColor="@color/white"
-                        app:arcProgress="80"
-                        app:arcShowLabel="false"
-                        app:arcShowThumb="false"
-                        app:arcStartAngle="180"
-                        app:arcStrokeWidth="50dp"
-                        app:arcSweepAngle="180"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_emotion"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/cl_family_graph"
                         app:layout_constraintWidth_percent="0.5"
                         android:background="@drawable/box_basic"
+                        android:elevation="5dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginTop="35dp">
+
+                        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:imagePlaceholder="@drawable/ic_menu_gallery"
+                            app:showNavigationButtons="false"
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

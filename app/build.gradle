@@ -93,7 +93,10 @@ dependencies {
 
     //tes permission
     implementation("io.github.ParkSangGwon:tedpermission:3.2.3")
-
     implementation 'com.github.jenly1314:arcseekbar:1.0.3'
 
+    //image slider
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.0.4'
 }
