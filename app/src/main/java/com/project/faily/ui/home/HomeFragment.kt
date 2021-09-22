@@ -25,7 +25,7 @@ class HomeFragment : Fragment(), HomeListener {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         viewModel.homeListener = this
-        binding.homeasd.setProgressColor(0xffFF9CA4.toInt(), 0xffFF9CA4.toInt(), 0xffFFD7D4.toInt(),
+        binding.familyGraph.setProgressColor(0xffFF9CA4.toInt(), 0xffFF9CA4.toInt(), 0xffFFD7D4.toInt(),
             0xffFF9CA4.toInt(), 0xffFFD7D4.toInt(), 0xffFFBCBE.toInt(), 0xffFFB2B6.toInt(),
             0xffFFAAB0.toInt(), 0xffFFA4AB.toInt(), 0xffFFA1A7.toInt(), 0xffFF9CA4.toInt()
         )
