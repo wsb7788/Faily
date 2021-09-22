@@ -1,4 +1,4 @@
-package com.project.faily.ui.calendar
+package com.project.faily.ui.question
 
 
 
@@ -6,10 +6,10 @@ package com.project.faily.ui.calendar
 
 import androidx.lifecycle.ViewModel
 import com.project.faily.data.BaseRepository
-import com.project.faily.data.remote.calendar.CalendarListener
 import com.project.faily.data.remote.home.HomeListener
 import com.project.faily.data.remote.login.LoginListener
+import com.project.faily.data.remote.question.QuestionListener
 
-class CalendarViewModel: ViewModel(){
-    var calendarListener: CalendarListener? = null
+class QuestionViewModel: ViewModel(){
+    var questionListener: QuestionListener? = null
 }
