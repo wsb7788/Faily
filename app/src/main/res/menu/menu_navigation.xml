@@ -12,6 +12,7 @@
         android:title="calendar"
         />
     <item
+        android:id="@+id/menu_home"
         app:showAsAction="never"
         android:title=""
         />
