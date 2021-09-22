@@ -9,7 +9,11 @@ import com.project.faily.R
 import com.project.faily.data.remote.main.MainListener
 import com.project.faily.databinding.ActivityMainBinding
 import com.project.faily.ui.BaseActivity
+import com.project.faily.ui.calendar.CalendarFragment
+import com.project.faily.ui.gallery.GalleryFragment
 import com.project.faily.ui.home.HomeFragment
+import com.project.faily.ui.question.QuestionFragment
+import com.project.faily.ui.setting.SettingFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity(), MainListener, NavigationBarView.OnItemSelectedListener {
@@ -66,7 +70,7 @@ class MainActivity : BaseActivity(), MainListener, NavigationBarView.OnItemSelec
 
     private fun showTabCalendar() {
         val transaction = manager.beginTransaction()
-        val fragment = HomeFragment()
+        val fragment = CalendarFragment()
         transaction.replace(binding.fragment.id, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
@@ -74,7 +78,7 @@ class MainActivity : BaseActivity(), MainListener, NavigationBarView.OnItemSelec
 
     private fun showTabGallery() {
         val transaction = manager.beginTransaction()
-        val fragment = HomeFragment()
+        val fragment = GalleryFragment()
         transaction.replace(binding.fragment.id, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
@@ -82,7 +86,7 @@ class MainActivity : BaseActivity(), MainListener, NavigationBarView.OnItemSelec
 
     private fun showTabSetting() {
         val transaction = manager.beginTransaction()
-        val fragment = HomeFragment()
+        val fragment = SettingFragment()
         transaction.replace(binding.fragment.id, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
@@ -90,7 +94,7 @@ class MainActivity : BaseActivity(), MainListener, NavigationBarView.OnItemSelec
 
     private fun showTabQuestion() {
         val transaction = manager.beginTransaction()
-        val fragment = HomeFragment()
+        val fragment = QuestionFragment()
         transaction.replace(binding.fragment.id, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
