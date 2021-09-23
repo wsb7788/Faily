@@ -144,14 +144,63 @@
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginTop="35dp">
 
-                        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:imagePlaceholder="@drawable/ic_menu_gallery"
+                       <!-- <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                            android:id="@+id/emoji_slider"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:carouselType="SHOWCASE"
+                            app:showIndicator="false"
+                            app:imagePlaceholder="@drawable/ic_emoji_exciting"
+                            app:imageScaleType="fitCenter"
+                            app:scalingFactor="0.7"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:scaleOnScroll="true"
+                            app:showBottomShadow="false"
+                            app:showCaption="false"
+                            app:carouselGravity="CENTER"
                             app:showNavigationButtons="false"
+                            app:showTopShadow="false" />-->
+
+                            <!--<com.limerse.slider.ImageCarousel
+                                android:id="@+id/ic"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:carouselType="SHOWCASE"
+                                app:showIndicator="false"
+                                app:imagePlaceholder="@drawable/ic_emoji_exciting"
+                                app:imageScaleType="fitCenter"
+                                app:scalingFactor="0.7"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:scaleOnScroll="true"
+                                app:showBottomShadow="false"
+                                app:showCaption="false"
+                                app:carouselGravity="CENTER"
+                                app:showNavigationButtons="false"
+                                app:showTopShadow="false"/>-->
+
+
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/viewpager2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingStart="55dp"
+                            android:paddingEnd="55dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -99,4 +99,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'me.relex:circleindicator:2.1.6'
     implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.0.4'
+
+    implementation 'com.github.akshaaatt:Sliding-Carousel:1.0.1'
+
+
+
 }
