@@ -39,13 +39,7 @@ class HomeFragment : Fragment(), HomeListener {
             0xffFFAAB0.toInt(), 0xffFFA4AB.toInt(), 0xffFFA1A7.toInt(), 0xffFF9CA4.toInt()
         )
 
-        /*val list = mutableListOf<CarouselItem>()
-        list.add(CarouselItem(imageDrawable = R.drawable.ic_emoji_exciting))
-        list.add(CarouselItem(imageDrawable = R.drawable.ic_emoji_nothing))
-        list.add(CarouselItem(imageDrawable = R.drawable.ic_emoji_sad))
-        list.add(CarouselItem(imageDrawable = R.drawable.ic_emoji_sick))
-        list.add(CarouselItem(imageDrawable = R.drawable.ic_emoji_upset))
-        binding.ic.setData(list)*/
+
 
         viewPagerInit()
 
