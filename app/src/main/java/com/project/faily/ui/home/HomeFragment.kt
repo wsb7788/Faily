@@ -2,20 +2,18 @@ package com.project.faily.ui.home
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.limerse.slider.model.CarouselItem
 import com.project.faily.R
 import com.project.faily.data.remote.home.HomeListener
 import com.project.faily.databinding.FragmentHomeBinding
-
-import org.imaginativeworld.whynotimagecarousel.model.CarouselType
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -26,6 +24,7 @@ class HomeFragment : Fragment(), HomeListener {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModel()
 
+    private lateinit var profileRecyclerAdapter: ProfileRecyclerAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,9 +40,31 @@ class HomeFragment : Fragment(), HomeListener {
 
 
 
+
+
+
+        recyclerInit()
         viewPagerInit()
 
+        val list = ArrayList<ProfileModel>()
+        for(i in 1..4){
+            val model = ProfileModel("승뷘",70,"ㅁㄴㅇ")
+            list.add(model)
+        }
+        profileRecyclerAdapter.submitList(list)
+        profileRecyclerAdapter.notifyDataSetChanged()
+
         return binding.root
+    }
+
+    private fun recyclerInit() {
+        profileRecyclerAdapter = ProfileRecyclerAdapter()
+
+        binding.rcv.apply {
+            layoutManager = GridLayoutManager(context,2)
+            adapter = profileRecyclerAdapter
+        }
+
     }
 
     private fun viewPagerInit() {
