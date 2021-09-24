@@ -7,12 +7,12 @@
 
     <com.king.view.arcseekbar.ArcSeekBar
         android:id="@+id/progress"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:arcEnabledDrag="false"
         app:arcNormalColor="#00000000"
         app:arcProgress="80"
-
+        app:arcEnabledSingle="false"
         app:arcShowLabel="false"
         app:arcShowThumb="false"
         app:arcStrokeCap="ROUND"
@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/iv_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/ic_profile_basic"
         app:layout_constraintBottom_toBottomOf="@id/progress"
         app:layout_constraintEnd_toEndOf="@id/progress"
