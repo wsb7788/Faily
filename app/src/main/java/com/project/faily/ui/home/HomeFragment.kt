@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -25,6 +26,7 @@ class HomeFragment : Fragment(), HomeListener {
     private val viewModel: HomeViewModel by viewModel()
 
     private lateinit var profileRecyclerAdapter: ProfileRecyclerAdapter
+    private lateinit var presentRecyclerAdapter: PresentRecyclerAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,15 +56,27 @@ class HomeFragment : Fragment(), HomeListener {
         profileRecyclerAdapter.submitList(list)
         profileRecyclerAdapter.notifyDataSetChanged()
 
+        val list2 = ArrayList<PresentModel>()
+        for(i in 1..4){
+            val model = PresentModel(R.drawable.ic_present)
+            list2.add(model)
+        }
+        presentRecyclerAdapter.submitList(list2)
+        presentRecyclerAdapter.notifyDataSetChanged()
+
         return binding.root
     }
 
     private fun recyclerInit() {
         profileRecyclerAdapter = ProfileRecyclerAdapter()
-
-        binding.rcv.apply {
+        presentRecyclerAdapter = PresentRecyclerAdapter()
+        binding.rcvFamily.apply {
             layoutManager = GridLayoutManager(context,2)
             adapter = profileRecyclerAdapter
+        }
+        binding.rcvPresent.apply{
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            adapter = presentRecyclerAdapter
         }
 
     }
