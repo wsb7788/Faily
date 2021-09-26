@@ -39,7 +39,6 @@ class CalendarFragment : BaseFragment(), CalendarListener {
 
 
         binding.calendar.setWeekDayTextAppearance(R.style.calendar_day)
-
         binding.calendar.setHeaderTextAppearance(R.style.calendar_title)
 
         binding.calendar.setOnDateChangedListener { widget, date, selected ->
