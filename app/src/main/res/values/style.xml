@@ -9,4 +9,9 @@
         <item name = "android:textSize">14sp</item>
         <item name = "android:textColor">@color/grayscale_1</item>
     </style>
+    <style name="Theme.NoWiredStrapInNavigationBar" parent="@style/Theme.Design.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 </resources>
