@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationBarView
+import com.project.faily.ApplicationClass
 import com.project.faily.R
 import com.project.faily.data.remote.main.MainListener
 import com.project.faily.data.remote.schedule_add.ScheduleAddListener
@@ -31,7 +33,20 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener{
         viewModel.scheduleAddListener = this
 
 
+        binding.clScheduleColor.setOnClickListener(this)
 
+    }
+
+    override fun onClick(v: View?) {
+        when(v){
+            binding.clScheduleColor ->{
+                val bottomSheetView = layoutInflater.inflate(R.layout.dialog_schedule_color,null)
+                val bottomSheetDialog = BottomSheetDialog(this@ScheduleAddActivity)
+                bottomSheetDialog.setContentView(bottomSheetView)
+                bottomSheetDialog.show()
+
+            }
+        }
     }
 
 

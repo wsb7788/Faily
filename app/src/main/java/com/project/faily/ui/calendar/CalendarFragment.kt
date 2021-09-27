@@ -1,16 +1,20 @@
 package com.project.faily.ui.calendar
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.project.faily.ApplicationClass
 import com.project.faily.R
 import com.project.faily.data.remote.calendar.CalendarListener
 import com.project.faily.databinding.FragmentCalendarBinding
 import com.project.faily.ui.BaseFragment
+import com.project.faily.ui.schedule_add.ScheduleAddActivity
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.CalendarMode
 import com.prolificinteractive.materialcalendarview.format.DateFormatTitleFormatter
@@ -51,6 +55,7 @@ class CalendarFragment : BaseFragment(), CalendarListener {
             }
 
         }
+        binding.clAdd.setOnClickListener(this)
         return binding.root
     }
 
@@ -73,7 +78,12 @@ class CalendarFragment : BaseFragment(), CalendarListener {
 
     override fun onClick(v: View?) {
         when(v){
+            binding.clAdd->{
+                val intent= Intent(requireContext(),ScheduleAddActivity::class.java)
+                startActivity(intent)
 
+
+            }
         }
     }
 }
