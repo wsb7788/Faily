@@ -1,10 +1,12 @@
 package com.project.faily.ui.schedule_add
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationBarView
@@ -48,7 +50,22 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener{
     }
 
     private fun dialogColor() {
-        val colorDialog = ColorDialog()
+        val colorDialog = ColorDialog{
+            when(it){
+                0 -> {
+                    binding.ivScheduleColor.setImageResource(R.drawable.box_schedule_anniversary)
+                }
+                1->{
+                    binding.ivScheduleColor.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(ApplicationClass.instance, R.color.primary_pink))
+                }
+                2->{
+                    binding.ivScheduleColor.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(ApplicationClass.instance, R.color.light_grey_green))
+                }
+                3->{
+                    binding.ivScheduleColor.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(ApplicationClass.instance, R.color.secondary_pink))
+                }
+            }
+        }
         colorDialog.show(supportFragmentManager,"")
     }
     private fun dialogRepeat() {

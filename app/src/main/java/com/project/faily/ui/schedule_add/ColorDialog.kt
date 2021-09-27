@@ -1,35 +1,47 @@
 package com.project.faily.ui.schedule_add
 
 import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.project.faily.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ColorDialog(): BottomSheetDialogFragment() {
+class ColorDialog(val itemClick: (Int) -> Unit): BottomSheetDialogFragment() {
 
+    private val viewModel: ScheduleAddViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (dialog as? BottomSheetDialog)?.behavior?.apply {
-            isFitToContents = true
-            isCancelable = true
-            state = BottomSheetBehavior.STATE_EXPANDED
+        val anniversary: ConstraintLayout = view.findViewById(R.id.cl_anniversary)
+        val family: ConstraintLayout = view.findViewById(R.id.cl_family)
+        val personal: ConstraintLayout = view.findViewById(R.id.cl_personal)
+        val normal: ConstraintLayout = view.findViewById(R.id.cl_normal)
+
+        anniversary.setOnClickListener {
+            itemClick(0)
+            dialog?.dismiss()
         }
+        family.setOnClickListener {
+            itemClick(1)
+            dialog?.dismiss()
+        }
+        personal.setOnClickListener {
+            itemClick(2)
+            dialog?.dismiss()
+        }
+        normal.setOnClickListener {
+            itemClick(3)
+            dialog?.dismiss()
+        }
+
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -42,12 +54,8 @@ class ColorDialog(): BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val view = inflater.inflate(R.layout.dialog_schedule_color, container, false)
 
-        val cl:ConstraintLayout = view.findViewById(R.id.cl_anniversary)
-
-
-        return view
+        return inflater.inflate(R.layout.dialog_schedule_color, container, false)
     }
 
 

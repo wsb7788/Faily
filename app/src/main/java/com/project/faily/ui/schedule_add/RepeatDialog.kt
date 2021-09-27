@@ -17,10 +17,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.project.faily.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class RepeatDialog(): BottomSheetDialogFragment() {
 
+
+    private val viewModel: ScheduleAddViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
