@@ -69,7 +69,14 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener{
         colorDialog.show(supportFragmentManager,"")
     }
     private fun dialogRepeat() {
-       val repeatDialog = RepeatDialog()
+       val repeatDialog = RepeatDialog(binding.tvRepeat.text.toString()){
+           when(it){
+               0-> binding.tvRepeat.text = "안함"
+               1-> binding.tvRepeat.text = "매주"
+               2-> binding.tvRepeat.text = "매월"
+               3-> binding.tvRepeat.text = "매년"
+           }
+       }
         repeatDialog.show(supportFragmentManager,"")
     }
 

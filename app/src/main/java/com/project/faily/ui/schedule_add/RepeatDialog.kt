@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -20,7 +21,7 @@ import com.project.faily.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class RepeatDialog(): BottomSheetDialogFragment() {
+class RepeatDialog(val value: String, val itemClick: (Int) -> Unit): BottomSheetDialogFragment() {
 
 
     private val viewModel: ScheduleAddViewModel by viewModel()
@@ -28,11 +29,36 @@ class RepeatDialog(): BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (dialog as? BottomSheetDialog)?.behavior?.apply {
-            isFitToContents = true
-            isCancelable = true
-            state = BottomSheetBehavior.STATE_EXPANDED
+
+        val no:ConstraintLayout = view.findViewById(R.id.cl_no)
+        val week:ConstraintLayout = view.findViewById(R.id.cl_week)
+        val month:ConstraintLayout = view.findViewById(R.id.cl_month)
+        val year:ConstraintLayout = view.findViewById(R.id.cl_year)
+
+        when(value){
+            "안함" -> view.findViewById<ImageView>(R.id.iv_no).setImageResource(R.drawable.ic_radio_checked)
+            "매주" -> view.findViewById<ImageView>(R.id.iv_week).setImageResource(R.drawable.ic_radio_checked)
+            "매월" -> view.findViewById<ImageView>(R.id.iv_month).setImageResource(R.drawable.ic_radio_checked)
+            "매년" -> view.findViewById<ImageView>(R.id.iv_year).setImageResource(R.drawable.ic_radio_checked)
         }
+        no.setOnClickListener {
+            itemClick(0)
+            dismiss()
+        }
+        week.setOnClickListener {
+            itemClick(1)
+            dismiss()
+        }
+        month.setOnClickListener {
+            itemClick(2)
+            dismiss()
+        }
+        year.setOnClickListener {
+            itemClick(3)
+            dismiss()
+        }
+
+
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

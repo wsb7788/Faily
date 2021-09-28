@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.project.faily.R
@@ -20,7 +19,7 @@ class ColorDialog(val itemClick: (Int) -> Unit): BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val anniversary: ConstraintLayout = view.findViewById(R.id.cl_anniversary)
+        val anniversary: ConstraintLayout = view.findViewById(R.id.cl_no)
         val family: ConstraintLayout = view.findViewById(R.id.cl_family)
         val personal: ConstraintLayout = view.findViewById(R.id.cl_personal)
         val normal: ConstraintLayout = view.findViewById(R.id.cl_normal)

@@ -9,7 +9,7 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSeetBehavor">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_anniversary"
+            android:id="@+id/cl_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +23,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
+                    android:id="@+id/iv_no"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     app:tint="@color/primary_pink"
@@ -37,9 +38,9 @@
             android:layout_marginTop="7.5dp"
             android:background="@color/grayscale_5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_anniversary" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_no" />
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_family"
+            android:id="@+id/cl_week"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/line1"
@@ -54,9 +55,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
+                    android:id="@+id/iv_week"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_radio_checked"
+                    android:src="@drawable/ic_radio_unchecked"
                     app:tint="@color/primary_pink"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
@@ -68,9 +70,9 @@
             android:layout_marginTop="7.5dp"
             android:background="@color/grayscale_5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_family" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_week" />
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_personal"
+            android:id="@+id/cl_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6.5dp"
@@ -86,6 +88,7 @@
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <ImageView
+                    android:id="@+id/iv_month"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_radio_unchecked"
@@ -100,9 +103,9 @@
             android:layout_marginTop="7.5dp"
             android:background="@color/grayscale_5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_personal" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_month" />
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_normal"
+            android:id="@+id/cl_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6.5dp"
@@ -117,6 +120,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
+                    android:id="@+id/iv_year"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_radio_unchecked"
