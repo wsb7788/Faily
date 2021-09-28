@@ -10,6 +10,5 @@ class QuestionViewHolder(val binding: SlideItemQuestionBinding): RecyclerView.Vi
     fun bind(questionModel: QuestionModel){
 
 
-
     }
 }
