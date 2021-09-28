@@ -19,6 +19,8 @@ class QuestionFragment : Fragment(), QuestionListener {
     private val binding get() = _binding!!
     private val viewModel: QuestionViewModel by viewModel()
 
+
+    private lateinit var questionAdapter:QuestionAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +30,26 @@ class QuestionFragment : Fragment(), QuestionListener {
         binding.viewModel = viewModel
         viewModel.questionListener = this
 
+
+
+        viewPagerInit()
+
         return binding.root
+    }
+
+    private fun viewPagerInit() {
+        questionAdapter = QuestionAdapter()
+        val questionList= ArrayList<QuestionModel>()
+
+
+        for(i in 0..10){
+            questionList.add(QuestionModel("앙기모띠","ㅁㄴㅇㄻㄴㅇㄹ", isAndswered = false, isToday = false))
+        }
+
+        binding.vpQuestion.adapter = questionAdapter
+        questionAdapter.submitList(questionList)
+        questionAdapter.notifyDataSetChanged()
+
     }
 
 
