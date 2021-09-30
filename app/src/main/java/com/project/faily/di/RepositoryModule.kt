@@ -1,9 +1,9 @@
 package com.project.faily.di
 
-import com.project.faily.data.repository.sign_up2.SignUp2Repository
+import com.project.faily.data.repository.email_auth.EmailAuthRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
 
-    single { SignUp2Repository(get()) }
+    single { EmailAuthRepository(get()) }
 }

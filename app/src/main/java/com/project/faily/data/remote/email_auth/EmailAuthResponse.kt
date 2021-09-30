@@ -1,4 +1,4 @@
-package com.project.faily.data.remote.sign_up2
+package com.project.faily.data.remote.email_auth
 
 
 

@@ -5,18 +5,21 @@ package com.project.faily.ui.sign_up2
 
 
 import android.text.SpannableStringBuilder
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.project.faily.data.entities.Email
 import com.project.faily.data.remote.email_auth.EmailAuthListener
 import com.project.faily.data.remote.reset_password.ResetPasswordListener
 import com.project.faily.data.remote.reset_password2.ResetPassword2Listener
 import com.project.faily.data.remote.sign_up.SignUpListener
 import com.project.faily.data.remote.sign_up2.SignUp2Listener
-import com.project.faily.data.repository.sign_up2.SignUp2Repository
+import com.project.faily.data.repository.email_auth.EmailAuthRepository
+import com.project.faily.util.Coroutines
 import com.project.faily.util.SharedPreferencesManager
 import java.util.regex.Pattern
 
-class SignUp2ViewModel(private val repository: SignUp2Repository, private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
+class SignUp2ViewModel(private val repository: EmailAuthRepository, private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
     var signUpListener: SignUpListener? = null
     var signUp2Listener: SignUp2Listener? = null
     var resetPasswordListener:ResetPasswordListener? = null
@@ -88,6 +91,28 @@ class SignUp2ViewModel(private val repository: SignUp2Repository, private val sh
 
         sharedPreferencesManager.saveSignUpUserInfo(_email,_pw)
         signUp2Listener!!.onStartEmailAuth()
+    }
+
+    fun emailAuth() {
+        val _email = email.value.toString()
+        val _pw = pw.value.toString()
+
+        Coroutines.main {
+            try{
+                val emailAuthResponse = repository.sendEmail(Email("wsb0514@naver.com"))
+                if (emailAuthResponse.isSuccess) {
+                    emailAuthListener!!.onLoginSucess("성공")
+                    return@main
+                }
+                emailAuthListener!!.onLoginFailure("실패")
+            }catch (e:Exception){
+                Log.d("로그",e.message!!)
+                emailAuthListener!!.onLoginFailure(e.message!!)
+            }
+
+
+        }
+
     }
 
 
