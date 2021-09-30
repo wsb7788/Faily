@@ -4,17 +4,12 @@ package com.project.faily.ui.sign_up
 
 
 
-import android.text.SpannableStringBuilder
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.faily.data.BaseRepository
 import com.project.faily.data.remote.email_auth.EmailAuthListener
-import com.project.faily.data.remote.login.LoginListener
 import com.project.faily.data.remote.reset_password.ResetPasswordListener
 import com.project.faily.data.remote.reset_password2.ResetPassword2Listener
 import com.project.faily.data.remote.sign_up.SignUpListener
-import com.project.faily.data.remote.splash.SplashListener
-import java.util.regex.Pattern
 
 class SignUpViewModel: ViewModel(){
     var signUpListener: SignUpListener? = null

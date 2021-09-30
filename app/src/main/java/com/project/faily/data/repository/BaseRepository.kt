@@ -1,4 +1,4 @@
-package com.project.faily.data
+package com.project.faily.data.repository
 
 
 import com.project.faily.util.ApiException

@@ -1,6 +1,7 @@
 package com.project.faily.di
 
 
+import com.project.faily.data.remote.sign_up2.SignUp2Service
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -20,6 +21,13 @@ val networkModule: Module = module {
         .build()
 
 
+    fun provideSignUp2Service(retrofit: Retrofit): SignUp2Service =
+        retrofit.create(SignUp2Service::class.java)
+
+
+
+    single { provideRetrofit() }
+    single { provideSignUp2Service(get()) }
 
 }
 
