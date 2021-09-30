@@ -25,7 +25,7 @@ val viewModelModule = module {
     viewModel { SignUpViewModel() }
     viewModel { SignInViewModel() }
     viewModel { PermissionViewModel() }
-    viewModel { SignUp2ViewModel() }
+    viewModel { SignUp2ViewModel(get(), get()) }
     viewModel { HomeViewModel() }
     viewModel { MainViewModel() }
     viewModel { CalendarViewModel() }

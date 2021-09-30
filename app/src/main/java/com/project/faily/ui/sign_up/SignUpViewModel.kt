@@ -45,12 +45,19 @@ class SignUpViewModel: ViewModel(){
 
     fun checkUser() {
         val _name = name.value.toString()
+        val _personAgree = personalAgree.value
+        val _serviceAgree = serviceAgree.value
 
 
         if(_name.isEmpty()){
             signUpListener!!.onCheckUserFailure( "이름을 입력하세요.")
             return
         }
+        if(_personAgree!! && _serviceAgree!!){
+            signUpListener!!.onStartSignUp2()
+            return
+        }
+        signUpListener!!.onCheckUserFailure( "회원가입을 위해서는 이용약관에 모두 동의하셔야 합니다.")
 
     }
 }

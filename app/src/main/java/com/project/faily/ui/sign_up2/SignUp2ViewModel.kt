@@ -12,9 +12,11 @@ import com.project.faily.data.remote.reset_password.ResetPasswordListener
 import com.project.faily.data.remote.reset_password2.ResetPassword2Listener
 import com.project.faily.data.remote.sign_up.SignUpListener
 import com.project.faily.data.remote.sign_up2.SignUp2Listener
+import com.project.faily.data.repository.sign_up2.SignUp2Repository
+import com.project.faily.util.SharedPreferencesManager
 import java.util.regex.Pattern
 
-class SignUp2ViewModel: ViewModel(){
+class SignUp2ViewModel(private val repository: SignUp2Repository, private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
     var signUpListener: SignUpListener? = null
     var signUp2Listener: SignUp2Listener? = null
     var resetPasswordListener:ResetPasswordListener? = null
@@ -83,5 +85,10 @@ class SignUp2ViewModel: ViewModel(){
             signUp2Listener!!.onCheckUserFailure( "비밀번호를 입력해주세요.")
             return
         }
+
+        sharedPreferencesManager.saveSignUpUserInfo(_email,_pw)
+        signUp2Listener!!.onStartEmailAuth()
     }
+
+
 }

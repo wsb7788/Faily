@@ -5,5 +5,6 @@ import android.text.SpannableStringBuilder
 interface SignUp2Listener {
     fun clearEmail(editable: SpannableStringBuilder)
     fun onCheckUserFailure( message: String)
+    fun onStartEmailAuth()
 
 }

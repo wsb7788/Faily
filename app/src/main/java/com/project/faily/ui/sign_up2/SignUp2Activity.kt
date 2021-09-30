@@ -1,5 +1,6 @@
 
 package com.project.faily.ui.sign_up2
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.text.SpannableStringBuilder
@@ -14,6 +15,7 @@ import com.project.faily.data.remote.sign_up2.SignUp2Listener
 import com.project.faily.databinding.ActivitySignUp2Binding
 import com.project.faily.databinding.ActivitySignUpBinding
 import com.project.faily.ui.BaseActivity
+import com.project.faily.ui.email_auth.EmailAuthActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUp2Activity : BaseActivity(), SignUp2Listener {
@@ -38,6 +40,7 @@ class SignUp2Activity : BaseActivity(), SignUp2Listener {
         binding.ivPasswordCheck.setOnClickListener(this)
         binding.ivPassword.setOnClickListener(this)
         binding.ivEmail.setOnClickListener(this)
+        binding.btnBack.setOnClickListener(this)
 
     }
 
@@ -47,6 +50,7 @@ class SignUp2Activity : BaseActivity(), SignUp2Listener {
             binding.ivPassword -> viewModel.showPw()
             binding.ivPasswordCheck -> viewModel.showPwCheck()
             binding.button -> viewModel.checkUser()
+            binding.btnBack -> onBackPressed()
         }
     }
 
@@ -90,6 +94,11 @@ class SignUp2Activity : BaseActivity(), SignUp2Listener {
 
     override fun onCheckUserFailure(message: String) {
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStartEmailAuth() {
+        val intent = Intent(this, EmailAuthActivity::class.java)
+        startActivity(intent)
     }
 }
 

@@ -5,5 +5,6 @@ import android.text.SpannableStringBuilder
 interface SignUpListener {
     fun clearName(editable: SpannableStringBuilder)
     fun onCheckUserFailure( message: String)
+    fun onStartSignUp2()
 
 }

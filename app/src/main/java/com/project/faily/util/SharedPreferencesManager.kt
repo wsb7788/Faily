@@ -23,6 +23,9 @@ class SharedPreferencesManager(private val context: Context){
     }
 
 
+    private fun getSignUpPref() : SharedPreferences {
+        return context.getSharedPreferences("signUp", Context.MODE_PRIVATE)
+    }
     private fun getUserInfoPref() : SharedPreferences {
         return context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
     }
@@ -80,6 +83,20 @@ class SharedPreferencesManager(private val context: Context){
         val pref = getUserInfoPref()
         return pref.getBoolean("autoLoginSuccess",false)
     }
-
+    fun saveSignUpUserInfo(email:String, password:String){
+        val pref = getSignUpPref()
+        val edit = pref.edit()
+        edit.putString("email",email)
+        edit.putString("password",password)
+        edit.apply()
+    }
+    fun getSignUpEmail():String{
+        val pref = getSignUpPref()
+        return pref.getString("email","")!!
+    }
+    fun getSignUpPassword():String{
+        val pref = getSignUpPref()
+        return pref.getString("password","")!!
+    }
 
 }
