@@ -1,9 +1,11 @@
 package com.project.faily.data.remote.email_auth
 
 interface EmailAuthListener {
-    fun onLoginSucess(message: String)
-    fun onLoginFailure(message: String)
+    fun onSendFailure(message:String)
     fun observeCode()
+    fun onAuthFailure(message: String)
+    fun onJoinFailure(message: String)
+    fun onStartTutorial()
 
 
 }

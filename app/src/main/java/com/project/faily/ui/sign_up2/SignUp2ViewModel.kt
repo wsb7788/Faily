@@ -5,17 +5,13 @@ package com.project.faily.ui.sign_up2
 
 
 import android.text.SpannableStringBuilder
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.faily.data.entities.Email
 import com.project.faily.data.remote.email_auth.EmailAuthListener
 import com.project.faily.data.remote.reset_password.ResetPasswordListener
 import com.project.faily.data.remote.reset_password2.ResetPassword2Listener
 import com.project.faily.data.remote.sign_up.SignUpListener
 import com.project.faily.data.remote.sign_up2.SignUp2Listener
-import com.project.faily.data.repository.email_auth.EmailAuthRepository
-import com.project.faily.util.Coroutines
 import com.project.faily.util.SharedPreferencesManager
 import java.util.regex.Pattern
 

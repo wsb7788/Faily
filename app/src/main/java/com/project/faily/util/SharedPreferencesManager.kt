@@ -99,4 +99,26 @@ class SharedPreferencesManager(private val context: Context){
         return pref.getString("password","")!!
     }
 
+    fun saveSignUpCode(code: String) {
+        val pref = getSignUpPref()
+        val edit = pref.edit()
+        edit.putString("code",code)
+        edit.apply()
+    }
+
+    fun getSignUpCode(): String {
+        val pref = getSignUpPref()
+        return pref.getString("code","")!!
+    }
+
+    fun getSingUpBdate(): String {
+        val pref = getSignUpPref()
+        return pref.getString("bdate","")!!
+    }
+
+    fun getSingUpName(): String {
+        val pref = getSignUpPref()
+        return pref.getString("name","")!!
+    }
+
 }
