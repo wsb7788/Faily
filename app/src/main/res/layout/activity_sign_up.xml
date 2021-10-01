@@ -179,7 +179,8 @@
             android:background="@drawable/login_border"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/sp_birth"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_bdate"
             app:layout_constraintStart_toStartOf="@+id/button"
             app:layout_constraintWidth_percent="0.8">
 
@@ -204,18 +205,38 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <DatePicker
-            android:id="@+id/sp_birth"
-            style="@android:style/Widget.DeviceDefault.DatePicker"
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bdate"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"
-            android:startYear="1950"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_border"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
             app:layout_constraintBottom_toTopOf="@id/button"
-            app:layout_constraintStart_toStartOf="@id/button"
-            app:layout_constraintWidth_percent="0.8" />
+            app:layout_constraintStart_toStartOf="@+id/button"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintWidth_percent="0.8">
+
+            <TextView
+                android:id="@+id/et_bdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:nextFocusDown="@id/et_password"
+                android:padding="0dp"
+                android:singleLine="true"
+                android:text="@={viewModel.bdate}"
+                android:hint="생년월일"
+                android:textAllCaps="true"
+                android:textColor="@color/dark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/button"

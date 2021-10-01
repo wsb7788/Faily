@@ -6,5 +6,6 @@ interface SignUpListener {
     fun clearName(editable: SpannableStringBuilder)
     fun onCheckUserFailure( message: String)
     fun onStartSignUp2()
+    fun showBdateDialog()
 
 }

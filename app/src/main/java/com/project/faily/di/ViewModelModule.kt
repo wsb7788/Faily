@@ -23,7 +23,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { LoginViewModel() }
     viewModel { SplashViewModel() }
-    viewModel { SignUpViewModel() }
+    viewModel { SignUpViewModel(get()) }
     viewModel { SignInViewModel() }
     viewModel { PermissionViewModel() }
     viewModel { SignUp2ViewModel(get()) }

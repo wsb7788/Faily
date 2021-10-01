@@ -1,5 +1,6 @@
 package com.project.faily.ui.sign_up
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
@@ -7,11 +8,13 @@ import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.CheckBox
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.project.faily.R
 import com.project.faily.data.remote.login.LoginListener
 import com.project.faily.data.remote.sign_up.SignUpListener
 import com.project.faily.databinding.ActivitySignUpBinding
+import com.project.faily.databinding.DialogBdateBinding
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.sign_up2.SignUp2Activity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,19 +36,21 @@ class SignUpActivity : BaseActivity(), SignUpListener {
         binding.btnSeeService.setOnClickListener(this)
         binding.button.setOnClickListener(this)
         binding.btnBack.setOnClickListener(this)
+        binding.clBdate.setOnClickListener(this)
+        binding.etBdate.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
         when(v) {
             binding.button -> viewModel.checkUser()
-            binding.btnSeePersonal -> {
-            }
-            binding.btnSeeService -> {
-            }
+            binding.btnSeePersonal -> { }
+            binding.btnSeeService -> { }
             binding.btnBack -> onBackPressed()
+            binding.clBdate,binding.etBdate -> showBdateDialog()
         }
     }
+
 
 
 
@@ -60,6 +65,21 @@ class SignUpActivity : BaseActivity(), SignUpListener {
     override fun onStartSignUp2() {
         val intent = Intent(this, SignUp2Activity::class.java)
         startActivity(intent)
+    }
+
+    override fun showBdateDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        val view = DialogBdateBinding.inflate(layoutInflater)
+        dialogBuilder.setView(view.root)
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
+        view.btnOk.setOnClickListener {
+            val year = view.spBdate.year.toString()
+            val month = (view.spBdate.month+1).toString()
+            val date = view.spBdate.dayOfMonth.toString()
+            binding.etBdate.text = "$year-$month-$date"
+            alertDialog.onBackPressed()
+        }
     }
 
     fun onAgreeClicked(view: View){

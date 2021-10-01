@@ -85,7 +85,7 @@ class SignUp2ViewModel(private val sharedPreferencesManager: SharedPreferencesMa
             return
         }
 
-        sharedPreferencesManager.saveSignUpUserInfo(_email,_pw)
+        sharedPreferencesManager.saveSignUpUserInfo2(_email,_pw)
         signUp2Listener!!.onStartEmailAuth()
     }
 

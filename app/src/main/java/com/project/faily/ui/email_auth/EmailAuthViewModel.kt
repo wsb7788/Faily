@@ -72,8 +72,8 @@ class EmailAuthViewModel(private val repository: EmailAuthRepository, private va
     private fun signUp() {
         val email = sharedPreferencesManager.getSignUpEmail()
         val pw = sharedPreferencesManager.getSignUpPassword()
-        val bdate = sharedPreferencesManager.getSingUpBdate()
-        val name = sharedPreferencesManager.getSingUpName()
+        val bdate = sharedPreferencesManager.getSignUpBdate()
+        val name = sharedPreferencesManager.getSignUpName()
         val user = User(user_email = email,user_bdate = bdate,user_name = name,user_pw = pw)
 
         Coroutines.main {
