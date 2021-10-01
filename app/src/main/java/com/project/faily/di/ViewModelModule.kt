@@ -2,6 +2,7 @@ package com.project.faily.di
 
 import com.project.faily.ui.answer.AnswerViewModel
 import com.project.faily.ui.calendar.CalendarViewModel
+import com.project.faily.ui.email_auth.EmailAuthViewModel
 import com.project.faily.ui.gallery.GalleryViewModel
 import com.project.faily.ui.home.HomeViewModel
 import com.project.faily.ui.login.LoginViewModel
@@ -25,7 +26,7 @@ val viewModelModule = module {
     viewModel { SignUpViewModel() }
     viewModel { SignInViewModel() }
     viewModel { PermissionViewModel() }
-    viewModel { SignUp2ViewModel(get(), get()) }
+    viewModel { SignUp2ViewModel(get()) }
     viewModel { HomeViewModel() }
     viewModel { MainViewModel() }
     viewModel { CalendarViewModel() }
@@ -34,4 +35,5 @@ val viewModelModule = module {
     viewModel { GalleryViewModel() }
     viewModel { ScheduleAddViewModel() }
     viewModel { AnswerViewModel() }
+    viewModel { EmailAuthViewModel(get(),get()) }
 }

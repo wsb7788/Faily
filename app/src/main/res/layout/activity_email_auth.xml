@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.project.faily.ui.sign_up2.SignUp2ViewModel" />
+            type="com.project.faily.ui.email_auth.EmailAuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,6 +74,7 @@
             android:background="@drawable/email_auth_circle"
             android:gravity="center"
             android:singleLine="true"
+            android:text="@={viewModel.code1}"
             android:inputType="number"
             android:maxLength="1"
             android:textColor="@color/grayscale_1"
@@ -92,6 +93,7 @@
             android:layout_marginBottom="80dp"
             android:background="@drawable/email_auth_circle"
             android:gravity="center"
+            android:text="@={viewModel.code2}"
             android:inputType="number"
             android:nextFocusDown="@id/et_email_code_3"
             android:maxLength="1"
@@ -113,6 +115,7 @@
             android:background="@drawable/email_auth_circle"
             android:gravity="center"
             android:inputType="number"
+            android:text="@={viewModel.code3}"
             android:maxLength="1"
             android:textColor="@color/grayscale_1"
             android:textSize="16sp"
@@ -132,6 +135,7 @@
             android:gravity="center"
             android:inputType="number"
             android:maxLength="1"
+            android:text="@={viewModel.code4}"
             android:layout_marginStart="10dp"
             android:textColor="@color/grayscale_1"
             android:textSize="16sp"

@@ -19,7 +19,7 @@ import com.project.faily.util.Coroutines
 import com.project.faily.util.SharedPreferencesManager
 import java.util.regex.Pattern
 
-class SignUp2ViewModel(private val repository: EmailAuthRepository, private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
+class SignUp2ViewModel(private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
     var signUpListener: SignUpListener? = null
     var signUp2Listener: SignUp2Listener? = null
     var resetPasswordListener:ResetPasswordListener? = null
@@ -93,27 +93,6 @@ class SignUp2ViewModel(private val repository: EmailAuthRepository, private val 
         signUp2Listener!!.onStartEmailAuth()
     }
 
-    fun emailAuth() {
-        val _email = email.value.toString()
-        val _pw = pw.value.toString()
-
-        Coroutines.main {
-            try{
-                val emailAuthResponse = repository.sendEmail(Email("wsb0514@naver.com"))
-                if (emailAuthResponse.isSuccess) {
-                    emailAuthListener!!.onLoginSucess("성공")
-                    return@main
-                }
-                emailAuthListener!!.onLoginFailure("실패")
-            }catch (e:Exception){
-                Log.d("로그",e.message!!)
-                emailAuthListener!!.onLoginFailure(e.message!!)
-            }
-
-
-        }
-
-    }
 
 
 }
