@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/btn_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/grayscale_4"
+            android:text="Skip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="32dp"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_onboarding"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintTop_toBottomOf="@id/btn_skip"
+            android:layout_marginTop="63dp"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가족 모두가 함께하는 채팅"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginStart="32dp"
+            android:textColor="@color/primary_pink"
+            app:layout_constraintTop_toBottomOf="@id/vp_onboarding"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="60dp"/>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="채팅을 따로 개설할 필요가 없어요. 페일리의 채팅에서 자유롭게 일상의 대화를 나눠 보세요."
+            android:textColor="@color/grayscale_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <ImageView
+            android:id="@+id/indicator_1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/email_auth_circle"
+            app:layout_constraintTop_toBottomOf="@id/tv_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/primary_pink"/>
+
+        <ImageView
+            android:id="@+id/indicator_2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/email_auth_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator_1"
+            app:layout_constraintStart_toEndOf="@id/indicator_1"
+            app:layout_constraintTop_toTopOf="@+id/indicator_1"
+            app:tint="@color/gray_1" />
+        <ImageView
+            android:id="@+id/indicator_3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/email_auth_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator_1"
+            app:layout_constraintStart_toEndOf="@id/indicator_2"
+            app:layout_constraintTop_toTopOf="@+id/indicator_1"
+            app:tint="@color/gray_1" />
+        <ImageView
+            android:id="@+id/indicator_4"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/email_auth_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator_1"
+            app:layout_constraintStart_toEndOf="@id/indicator_3"
+            app:layout_constraintTop_toTopOf="@+id/indicator_1"
+            app:tint="@color/gray_1" />
+
+        <Button
+            android:visibility="invisible"
+            android:id="@+id/btn_start"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintTop_toBottomOf="@id/indicator_1"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/primary_pink"
+            android:text="시작하기"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
