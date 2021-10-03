@@ -43,6 +43,7 @@ class EmailAuthViewModel(private val repository: EmailAuthRepository, private va
         val email = sharedPreferencesManager.getSignUpEmail()
         val user = User(user_email = email)
 
+
         Coroutines.main {
             try{
                 val emailAuthResponse = repository.sendEmail(user)
