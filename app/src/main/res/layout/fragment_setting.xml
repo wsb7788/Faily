@@ -214,6 +214,15 @@
                     app:layout_constraintBottom_toBottomOf="@id/iv_notice"
                     app:layout_constraintStart_toEndOf="@id/iv_notice"
                     android:layout_marginStart="10dp"/>
+                <ImageView
+                    android:id="@+id/btn_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintTop_toTopOf="@id/iv_notice"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_notice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"/>
 
                 <ImageView
                     android:id="@+id/iv_app_setting"
@@ -236,6 +245,29 @@
                     app:layout_constraintStart_toEndOf="@id/iv_app_setting"
                     android:layout_marginStart="10dp"/>
 
+                <ImageView
+                    android:id="@+id/btn_app_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintTop_toTopOf="@id/iv_app_setting"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_app_setting"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"/>
+
+                <Button
+                    android:id="@+id/btn_logout"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_app_setting"
+                    android:layout_marginTop="200dp"
+                    android:backgroundTint="@color/secondary_pink"
+                    android:text="로그아웃"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
