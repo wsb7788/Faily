@@ -7,6 +7,7 @@ import com.project.faily.ui.gallery.GalleryViewModel
 import com.project.faily.ui.home.HomeViewModel
 import com.project.faily.ui.login.LoginViewModel
 import com.project.faily.ui.main.MainViewModel
+import com.project.faily.ui.notice.NoticeViewModel
 import com.project.faily.ui.permission.PermissionViewModel
 import com.project.faily.ui.question.QuestionViewModel
 import com.project.faily.ui.schedule_add.ScheduleAddViewModel
@@ -38,4 +39,5 @@ val viewModelModule = module {
     viewModel { AnswerViewModel() }
     viewModel { EmailAuthViewModel(get(),get()) }
     viewModel { SettingProfileViewModel() }
+    viewModel { NoticeViewModel() }
 }
