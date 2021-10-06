@@ -82,6 +82,7 @@
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/sw_chat"
                 android:layout_width="wrap_content"
+                style="@style/SwitchStyle"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/tv_noti_chat"
                 app:layout_constraintBottom_toBottomOf="@id/tv_noti_chat_info"

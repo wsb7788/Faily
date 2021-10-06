@@ -22,6 +22,7 @@
        <!-- <item name="android:windowTranslucentNavigation">true</item>-->
         <item name="android:fitsSystemWindows">true</item>
 
+        <item name="switchStyle">@style/SwitchStyle</item>
 
 <!--        bottomSheet-->
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
@@ -42,7 +43,14 @@
 
 <!--    switchstyle-->
     <style name="SwitchStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
-        <item name="android:trackTint">@color/secondary_pink</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay</item>
+        <item name="switchMinWidth"> 50dp</item>
+
+
+
+    </style>
+    <style name="ThemeOverlay">
+        <item name="colorSecondary">@color/primary_pink</item>
     </style>
 
 </resources>
