@@ -22,6 +22,7 @@
        <!-- <item name="android:windowTranslucentNavigation">true</item>-->
         <item name="android:fitsSystemWindows">true</item>
 
+
 <!--        bottomSheet-->
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
 
@@ -37,6 +38,11 @@
     <style name="AppModalStyle"
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/box_bottom_sheet</item>
+    </style>
+
+<!--    switchstyle-->
+    <style name="SwitchStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="android:trackTint">@color/secondary_pink</item>
     </style>
 
 </resources>

@@ -24,7 +24,9 @@
         <activity android:name=".ui.sign_up2.SignUp2Activity"/>
         <activity android:name=".ui.schedule_add.ScheduleAddActivity"/>
         <activity android:name=".ui.email_auth.EmailAuthActivity"/>
-            <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.setting_profile.SettingProfileActivity"/>
+            <activity android:name=".ui.setting_app.SettingAppActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

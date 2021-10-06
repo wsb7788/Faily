@@ -12,6 +12,7 @@ import com.project.faily.ui.permission.PermissionViewModel
 import com.project.faily.ui.question.QuestionViewModel
 import com.project.faily.ui.schedule_add.ScheduleAddViewModel
 import com.project.faily.ui.setting.SettingViewModel
+import com.project.faily.ui.setting_app.SettingAppViewModel
 import com.project.faily.ui.setting_profile.SettingProfileViewModel
 import com.project.faily.ui.sign_in.SignInViewModel
 import com.project.faily.ui.sign_up.SignUpViewModel
@@ -40,4 +41,5 @@ val viewModelModule = module {
     viewModel { EmailAuthViewModel(get(),get()) }
     viewModel { SettingProfileViewModel() }
     viewModel { NoticeViewModel() }
+    viewModel { SettingAppViewModel() }
 }
