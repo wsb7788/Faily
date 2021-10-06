@@ -37,8 +37,13 @@ class SettingAppActivity : BaseActivity(), SettingAppListener {
 
 
 
-
+        binding.btnBack.setOnClickListener(this)
     }
 
+    override fun onClick(v: View?) {
+        when(v){
+            binding.btnBack -> onBackPressed()
+        }
+    }
 }
 

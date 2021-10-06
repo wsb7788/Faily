@@ -7,10 +7,14 @@ package com.project.faily.ui.sign_in
 import android.text.SpannableStringBuilder
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.project.faily.data.entities.User
 import com.project.faily.data.remote.sign_in.SignInListener
+import com.project.faily.data.repository.login.LoginRepository
+import com.project.faily.util.Coroutines
+import com.project.faily.util.SharedPreferencesManager
 import java.util.regex.Pattern
 
-class SignInViewModel: ViewModel(){
+class SignInViewModel(private val repository: LoginRepository, private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
 
 
     var signinListener: SignInListener? = null
@@ -67,6 +71,33 @@ class SignInViewModel: ViewModel(){
         if(_pw.isEmpty()){
             signinListener!!.onCheckUserFailure( "비밀번호를 입력해주세요.")
             return
+        }
+
+        startLogin()
+    }
+
+    private fun startLogin() {
+
+        Coroutines.main {
+
+            try {
+                val email = email.value.toString()
+                val pw = pw.value.toString()
+
+                val loginResponse = repository.login(User(user_email = email, user_pw = pw))
+
+                if(loginResponse.isSuccess){
+                    sharedPreferencesManager.saveToken(loginResponse.jwt_token)
+                    signinListener!!.onLoginSuccess()
+                    return@main
+                }
+                signinListener!!.onLoginFailure(loginResponse.message)
+
+
+
+            }catch (e:Exception){
+                signinListener!!.onLoginFailure(e.message!!)
+            }
         }
     }
 }

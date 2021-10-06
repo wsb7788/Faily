@@ -1,5 +1,6 @@
 package com.project.faily.ui.sign_in
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.text.SpannableStringBuilder
@@ -10,6 +11,8 @@ import com.project.faily.R
 import com.project.faily.data.remote.sign_in.SignInListener
 import com.project.faily.databinding.ActivitySignInBinding
 import com.project.faily.ui.BaseActivity
+import com.project.faily.ui.main.MainActivity
+import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInActivity : BaseActivity(), SignInListener {
@@ -29,6 +32,7 @@ class SignInActivity : BaseActivity(), SignInListener {
         binding.ivPassword.setOnClickListener(this)
         binding.ivEmail.setOnClickListener(this)
         binding.button.setOnClickListener(this)
+        binding.btnBack.setOnClickListener(this)
     }
 
     private fun idObserve() {
@@ -59,6 +63,7 @@ class SignInActivity : BaseActivity(), SignInListener {
             binding.ivPassword-> viewModel.showPw()
             binding.ivEmail -> viewModel.emailBlankCheck()
             binding.button -> viewModel.checkUser()
+            binding.btnBack -> onBackPressed()
         }
     }
 
@@ -67,6 +72,20 @@ class SignInActivity : BaseActivity(), SignInListener {
     }
 
     override fun onCheckUserFailure(message: String) {
-        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+        applicationContext.toast(message)
+    }
+
+    override fun onLoginFailure(message: String) {
+        applicationContext.toast(message)
+    }
+
+    override fun onLoginSuccess() {
+        onStartMain()
+    }
+
+    private fun onStartMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
