@@ -3,6 +3,7 @@ package com.project.faily.di
 
 import com.project.faily.data.remote.email_auth.EmailAuthService
 import com.project.faily.data.remote.login.LoginService
+import com.project.faily.data.remote.tutorial_insert.TutorialInsertService
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -27,12 +28,14 @@ val networkModule: Module = module {
 
     fun provideLoginService(retrofit: Retrofit): LoginService =
         retrofit.create(LoginService::class.java)
-
+    fun provideTutorialInsertService(retrofit: Retrofit): TutorialInsertService =
+        retrofit.create(TutorialInsertService::class.java)
 
 
     single { provideRetrofit() }
     single { provideEmailAuthService(get()) }
     single { provideLoginService(get()) }
+    single { provideTutorialInsertService(get()) }
 
 }
 

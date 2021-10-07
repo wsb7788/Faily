@@ -1,6 +1,8 @@
 package com.project.faily.ui.tutorial
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.project.faily.R
 import com.project.faily.data.remote.login.LoginListener
@@ -19,10 +21,27 @@ class TutorialActivity: BaseActivity(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tutorial)
         binding.lifecycleOwner = this
 
+        binding.buttonNo.setOnClickListener(this)
+        binding.buttonYes.setOnClickListener(this)
+
 
 
 
     }
 
+    override fun onClick(v: View?) {
 
+        when(v){
+            binding.buttonYes -> onStartInsertCode()
+            binding.buttonNo -> onStartInviteCode()
+        }
+    }
+
+    private fun onStartInviteCode() {
+        val intent = Intent(this, )
+    }
+
+    private fun onStartInsertCode() {
+
+    }
 }

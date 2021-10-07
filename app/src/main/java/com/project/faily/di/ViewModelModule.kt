@@ -38,7 +38,7 @@ val viewModelModule = module {
     viewModel { GalleryViewModel() }
     viewModel { ScheduleAddViewModel() }
     viewModel { AnswerViewModel() }
-    viewModel { EmailAuthViewModel(get(),get()) }
+    viewModel { EmailAuthViewModel(get(),get(), get()) }
     viewModel { SettingProfileViewModel() }
     viewModel { NoticeViewModel() }
     viewModel { SettingAppViewModel() }

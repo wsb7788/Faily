@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.faily.data.entities.User
 import com.project.faily.data.remote.email_auth.EmailAuthListener
+import com.project.faily.data.remote.tutorial_insert.TutorialInsertListener
 import com.project.faily.data.repository.email_auth.EmailAuthRepository
 import com.project.faily.util.Coroutines
 import com.project.faily.util.SharedPreferencesManager
@@ -91,6 +92,7 @@ class EmailAuthViewModel(private val repository: EmailAuthRepository, private va
             }
         }
     }
+
 
 
 }
