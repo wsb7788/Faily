@@ -87,7 +87,7 @@ class SignInViewModel(private val repository: LoginRepository, private val share
                 val loginResponse = repository.login(User(user_email = email, user_pw = pw))
 
                 if(loginResponse.isSuccess){
-                    sharedPreferencesManager.saveToken(loginResponse.jwt_token)
+                    sharedPreferencesManager.saveJwtToken(loginResponse.jwt_token)
                     signinListener!!.onLoginSuccess()
                     return@main
                 }

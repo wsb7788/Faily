@@ -129,11 +129,14 @@ class SharedPreferencesManager(private val context: Context){
         edit.apply()
     }
 
-    fun saveToken(jwtToken: String) {
+    fun saveJwtToken(jwtToken: String) {
         val pref = getUserInfoPref()
         val edit = pref.edit()
-        edit.putString("jwt",jwtToken)
+        edit.putString("jwt_token",jwtToken)
         edit.apply()
     }
-
+    fun getJwtToken():String{
+        val pref = getUserInfoPref()
+        return pref.getString("jwt_token","")!!
+    }
 }

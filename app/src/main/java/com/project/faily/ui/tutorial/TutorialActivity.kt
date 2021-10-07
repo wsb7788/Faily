@@ -38,7 +38,7 @@ class TutorialActivity: BaseActivity(){
     }
 
     private fun onStartInviteCode() {
-        val intent = Intent(this, )
+
     }
 
     private fun onStartInsertCode() {
