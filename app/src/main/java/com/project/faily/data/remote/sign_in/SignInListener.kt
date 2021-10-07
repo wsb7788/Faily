@@ -9,4 +9,6 @@ interface SignInListener {
     fun onLoginSuccess()
 
 
+    fun onStartMain()
+    fun onStartTutorial()
 }

@@ -1,5 +1,6 @@
 package com.project.faily.ui.tutorial_invite
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -7,6 +8,7 @@ import com.project.faily.R
 import com.project.faily.data.remote.tutorial_invite.TutorialInviteListener
 import com.project.faily.databinding.ActivityTutorialInviteBinding
 import com.project.faily.ui.BaseActivity
+import com.project.faily.ui.main.MainActivity
 import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,6 +37,7 @@ class TutorialInviteActivity : BaseActivity(), TutorialInviteListener {
 
         when(v){
             binding.btnBack -> onBackPressed()
+            binding.button -> viewModel.saveChatCode()
         }
     }
 
@@ -44,6 +47,12 @@ class TutorialInviteActivity : BaseActivity(), TutorialInviteListener {
 
     override fun onLoadSuccess(code: String) {
         binding.tvCode.text = code
+    }
+
+    override fun onStartMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 

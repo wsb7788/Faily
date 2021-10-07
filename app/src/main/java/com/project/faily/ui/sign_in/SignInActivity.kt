@@ -81,10 +81,15 @@ class SignInActivity : BaseActivity(), SignInListener {
     }
 
     override fun onLoginSuccess() {
-        onStartMain()
+
     }
 
-    private fun onStartMain() {
+    override fun onStartMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+    override fun onStartTutorial() {
         val intent = Intent(this, TutorialActivity::class.java)
         startActivity(intent)
         finish()

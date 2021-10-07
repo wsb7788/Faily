@@ -55,6 +55,7 @@ class TutorialInsertViewModel(private val repository: TutorialInsertRepository, 
             try{
                 val emailAuthResponse = repository.entryChat(GroupCode(code))
                 if (emailAuthResponse.isSuccess) {
+                    sharedPreferencesManager.saveChatCode(code)
                     tutorialInsertListener!!.onCheckSuccess(emailAuthResponse.message)
                     return@main
                 }
