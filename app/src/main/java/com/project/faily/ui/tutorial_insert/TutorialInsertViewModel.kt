@@ -55,7 +55,7 @@ class TutorialInsertViewModel(private val repository: TutorialInsertRepository, 
             try{
                 val emailAuthResponse = repository.entryChat(GroupCode(code))
                 if (emailAuthResponse.isSuccess) {
-                    tutorialInsertListener!!.onCheckFailure("성공")
+                    tutorialInsertListener!!.onCheckSuccess(emailAuthResponse.message)
                     return@main
                 }
                 tutorialInsertListener!!.onCheckFailure("실패")

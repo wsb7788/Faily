@@ -12,6 +12,7 @@ import com.project.faily.data.remote.sign_in.SignInListener
 import com.project.faily.databinding.ActivitySignInBinding
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.main.MainActivity
+import com.project.faily.ui.tutorial.TutorialActivity
 import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -84,7 +85,7 @@ class SignInActivity : BaseActivity(), SignInListener {
     }
 
     private fun onStartMain() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, TutorialActivity::class.java)
         startActivity(intent)
         finish()
     }

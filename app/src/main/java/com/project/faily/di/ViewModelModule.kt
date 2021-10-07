@@ -18,6 +18,8 @@ import com.project.faily.ui.sign_in.SignInViewModel
 import com.project.faily.ui.sign_up.SignUpViewModel
 import com.project.faily.ui.sign_up2.SignUp2ViewModel
 import com.project.faily.ui.splash.SplashViewModel
+import com.project.faily.ui.tutorial_insert.TutorialInsertViewModel
+import com.project.faily.ui.tutorial_invite.TutorialInviteViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 
 import org.koin.dsl.module
@@ -42,4 +44,6 @@ val viewModelModule = module {
     viewModel { SettingProfileViewModel() }
     viewModel { NoticeViewModel() }
     viewModel { SettingAppViewModel() }
+    viewModel { TutorialInviteViewModel(get(),get()) }
+    viewModel { TutorialInsertViewModel(get(),get()) }
 }

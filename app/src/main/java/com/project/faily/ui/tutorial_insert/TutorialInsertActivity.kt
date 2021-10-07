@@ -12,6 +12,7 @@ import com.project.faily.databinding.ActivityEmailAuthBinding
 import com.project.faily.databinding.ActivityTutorialInsertBinding
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.email_auth.EmailAuthViewModel
+import com.project.faily.ui.main.MainActivity
 import com.project.faily.ui.tutorial.TutorialActivity
 import com.project.faily.util.hideKeyboard
 import com.project.faily.util.toast
@@ -72,6 +73,17 @@ class TutorialInsertActivity : BaseActivity(), TutorialInsertListener {
 
     override fun onCheckFailure(message: String) {
         applicationContext.toast(message)
+    }
+
+    override fun onCheckSuccess(message: String) {
+        applicationContext.toast(message)
+        onStartMain()
+    }
+
+    override fun onStartMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 

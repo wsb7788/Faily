@@ -4,6 +4,7 @@ package com.project.faily.di
 import com.project.faily.data.remote.email_auth.EmailAuthService
 import com.project.faily.data.remote.login.LoginService
 import com.project.faily.data.remote.tutorial_insert.TutorialInsertService
+import com.project.faily.data.remote.tutorial_invite.TutorialInviteService
 import com.project.faily.util.SharedPreferencesManager
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -51,13 +52,17 @@ val networkModule: Module = module {
         retrofit.create(LoginService::class.java)
     fun provideTutorialInsertService(retrofit: Retrofit): TutorialInsertService =
         retrofit.create(TutorialInsertService::class.java)
+     fun provideTutorialInviteService(retrofit: Retrofit): TutorialInviteService =
+        retrofit.create(TutorialInviteService::class.java)
 
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
+
     single { provideEmailAuthService(get()) }
     single { provideLoginService(get()) }
     single { provideTutorialInsertService(get()) }
+    single { provideTutorialInviteService(get()) }
 
 }
 

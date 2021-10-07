@@ -10,6 +10,8 @@ import com.project.faily.data.remote.splash.SplashListener
 import com.project.faily.databinding.ActivitySplashBinding
 import com.project.faily.databinding.ActivityTutorialBinding
 import com.project.faily.ui.BaseActivity
+import com.project.faily.ui.tutorial_insert.TutorialInsertActivity
+import com.project.faily.ui.tutorial_invite.TutorialInviteActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TutorialActivity: BaseActivity(){
@@ -38,10 +40,12 @@ class TutorialActivity: BaseActivity(){
     }
 
     private fun onStartInviteCode() {
-
+        val intent = Intent(this, TutorialInviteActivity::class.java)
+        startActivity(intent)
     }
 
     private fun onStartInsertCode() {
-
+        val intent = Intent(this, TutorialInsertActivity::class.java)
+        startActivity(intent)
     }
 }
