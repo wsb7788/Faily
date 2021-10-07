@@ -88,7 +88,8 @@ class SignInViewModel(private val repository: LoginRepository, private val share
 
                 if(loginResponse.isSuccess){
                     sharedPreferencesManager.saveJwtToken(loginResponse.jwt_token)
-                    if(sharedPreferencesManager.getChatCode().isNotEmpty()){
+                    if(loginResponse.group_code.isNotEmpty()){
+                        sharedPreferencesManager.saveChatCode(loginResponse.group_code)
                         signinListener!!.onStartMain()
                         return@main
                     }
