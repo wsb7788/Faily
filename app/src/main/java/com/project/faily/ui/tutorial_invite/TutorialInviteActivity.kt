@@ -30,7 +30,6 @@ class TutorialInviteActivity : BaseActivity(), TutorialInviteListener {
 
         binding.button.setOnClickListener(this)
         binding.btnBack.setOnClickListener(this)
-
     }
 
     override fun onClick(v: View?) {
