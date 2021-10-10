@@ -26,6 +26,7 @@ class TutorialInviteActivity : BaseActivity(), TutorialInviteListener {
 
 
 
+
         viewModel.codeLoad()
 
         binding.button.setOnClickListener(this)
