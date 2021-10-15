@@ -7,8 +7,6 @@ interface SignInListener {
     fun onCheckUserFailure( message: String)
     fun onLoginFailure(message: String)
     fun onLoginSuccess()
-
-
     fun onStartMain()
     fun onStartTutorial()
 }
