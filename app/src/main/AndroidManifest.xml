@@ -24,12 +24,12 @@
         <activity android:name=".ui.sign_up2.SignUp2Activity"/>
         <activity android:name=".ui.schedule_add.ScheduleAddActivity"/>
         <activity android:name=".ui.email_auth.EmailAuthActivity"/>
-        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.login.LoginActivity"/>
         <activity android:name=".ui.setting_profile.SettingProfileActivity"/>
         <activity android:name=".ui.tutorial.TutorialActivity"/>
         <activity android:name=".ui.tutorial_insert.TutorialInsertActivity"/>
         <activity android:name=".ui.tutorial_invite.TutorialInviteActivity"/>
-            <activity android:name=".ui.login.LoginActivity">
+            <activity android:name=".ui.main.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
