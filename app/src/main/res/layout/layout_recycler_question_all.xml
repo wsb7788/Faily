@@ -21,13 +21,13 @@
         android:id="@+id/tv_question"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="asdf"
         android:layout_marginStart="10dp"
+        android:text="asdf"
         android:textColor="@color/grayscale_1"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_date"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_number" />
 
     <TextView
         android:id="@+id/tv_date"
@@ -39,7 +39,17 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_number" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_profile"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toTopOf="@id/tv_date"
+        app:layout_constraintBottom_toBottomOf="@id/tv_date"
+        app:layout_constraintStart_toEndOf="@id/tv_date"
+        app:layout_constraintEnd_toStartOf="@id/btn_show"
+        android:layout_marginStart="20dp"/>
     <ImageView
+        android:id="@+id/btn_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_question_expand"
@@ -48,7 +58,8 @@
         android:layout_marginEnd="10dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_answer"
+        android:id="@+id/cl_my"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_date"
@@ -56,7 +67,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/text1"
+            android:id="@+id/tv_my"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="나의 답변"
@@ -71,21 +82,129 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/text1"
-            app:layout_constraintBottom_toBottomOf="@id/text1"/>
+            app:layout_constraintTop_toTopOf="@id/tv_my"
+            app:layout_constraintBottom_toBottomOf="@id/tv_my"/>
 
+        <TextView
+            android:id="@+id/tv_my_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/grayscale_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_my"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="22dp"
+            android:text="Eleifend sit senectus malesuada fusce sociis nunc. Quis egestas quisque est ipsum sagittis sed dictum. Adipiscing ut augue diam sed aliquam faucibus egestas enim ultricies. Quam nullam amet consectetur ultrice."
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_family"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cl_my"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_person1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가족1의 답변"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/grayscale_1"/>
+
+        <TextView
+            android:id="@+id/tv_person1_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/grayscale_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_person1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="22dp"
+            android:text="앙 가족1띠~\n앙 가족1띠~\n앙 가족1띠~\n앙 가족1띠~" />
+
+        <TextView
+            android:id="@+id/tv_person2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가족2의 답변"
+            android:layout_marginTop="22dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tv_person1_answer"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/grayscale_1"/>
+
+        <TextView
+            android:id="@+id/tv_person2_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/grayscale_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_person2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="22dp"
+            android:text="앙 가족2띠~\n앙 가족2띠~\n앙 가족2띠~\n앙 가족2띠~" />
+        <TextView
+            android:id="@+id/tv_person3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가족3의 답변"
+            android:layout_marginTop="22dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tv_person2_answer"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/grayscale_1"/>
+
+        <TextView
+            android:id="@+id/tv_person3_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/grayscale_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_person3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="22dp"
+            android:text="앙 가족3띠~\n앙 가족3띠~\n앙 가족3띠~\n앙 가족3띠~" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_no"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cl_my"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/grayscale_2"
-            app:layout_constraintTop_toBottomOf="@id/text1"
+            android:textStyle="bold"
+            android:text="가족 모두가 답변을 해 답변을 열어보세요"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/iv_lock"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="22dp"
-            android:text="Eleifend sit senectus malesuada fusce sociis nunc. Quis egestas quisque est ipsum sagittis sed dictum. Adipiscing ut augue diam sed aliquam faucibus egestas enim ultricies. Quam nullam amet consectetur ultrice."
-            />
-
-
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
