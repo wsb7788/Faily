@@ -2,7 +2,10 @@ package com.project.faily.di
 
 
 import com.project.faily.data.remote.email_auth.EmailAuthService
+import com.project.faily.data.remote.home.HomeService
 import com.project.faily.data.remote.login.LoginService
+import com.project.faily.data.remote.question.QuestionService
+import com.project.faily.data.remote.qustion_all.QuestionAllService
 import com.project.faily.data.remote.tutorial_insert.TutorialInsertService
 import com.project.faily.data.remote.tutorial_invite.TutorialInviteService
 import com.project.faily.util.SharedPreferencesManager
@@ -54,6 +57,12 @@ val networkModule: Module = module {
         retrofit.create(TutorialInsertService::class.java)
      fun provideTutorialInviteService(retrofit: Retrofit): TutorialInviteService =
         retrofit.create(TutorialInviteService::class.java)
+     fun provideHomeService(retrofit: Retrofit): HomeService =
+        retrofit.create(HomeService::class.java)
+     fun provideQuestionService(retrofit: Retrofit): QuestionService =
+        retrofit.create(QuestionService::class.java)
+     fun provideQuestionAllService(retrofit: Retrofit): QuestionAllService =
+        retrofit.create(QuestionAllService::class.java)
 
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
@@ -63,6 +72,9 @@ val networkModule: Module = module {
     single { provideLoginService(get()) }
     single { provideTutorialInsertService(get()) }
     single { provideTutorialInviteService(get()) }
+    single { provideHomeService(get()) }
+    single { provideQuestionService(get()) }
+    single { provideQuestionAllService(get()) }
 
 }
 
