@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.project.faily.R
 import com.project.faily.data.remote.home.HomeListener
 import com.project.faily.databinding.FragmentHomeBinding
+import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -47,6 +48,7 @@ class HomeFragment : Fragment(), HomeListener {
 
         recyclerInit()
         viewPagerInit()
+        viewModel.callQuestion()
 
         val list = ArrayList<ProfileModel>()
         for(i in 1..4){
@@ -107,6 +109,10 @@ class HomeFragment : Fragment(), HomeListener {
         })
         binding.viewpager2.setPageTransformer(compositePageTransformer)
         binding.viewpager2.currentItem = 100
+    }
+
+    override fun onFailure(message: String) {
+        requireContext().toast(message)
     }
 
 

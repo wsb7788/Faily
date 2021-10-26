@@ -32,10 +32,10 @@ val viewModelModule = module {
     viewModel { SignInViewModel(get(),get()) }
     viewModel { PermissionViewModel() }
     viewModel { SignUp2ViewModel(get()) }
-    viewModel { HomeViewModel() }
+    viewModel { HomeViewModel(get()) }
     viewModel { MainViewModel() }
     viewModel { CalendarViewModel() }
-    viewModel { QuestionViewModel() }
+    viewModel { QuestionViewModel(get()) }
     viewModel { SettingViewModel() }
     viewModel { GalleryViewModel() }
     viewModel { ScheduleAddViewModel() }
