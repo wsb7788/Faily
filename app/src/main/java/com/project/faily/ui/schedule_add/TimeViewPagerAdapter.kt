@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.project.faily.ApplicationClass
+import com.project.faily.util.SharedPreferencesManager
 
 class TimeViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle):FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int =2
@@ -15,4 +17,5 @@ class TimeViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle
             else -> Fragment()
         }
     }
+
 }

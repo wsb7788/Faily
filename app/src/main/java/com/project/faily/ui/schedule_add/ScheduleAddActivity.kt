@@ -19,6 +19,7 @@ import com.project.faily.databinding.ActivityScheduleAddBinding
 import com.project.faily.databinding.DialogDatetimePickerBinding
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.calendar.CalendarFragment
+import com.project.faily.util.SharedPreferencesManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -46,11 +47,12 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener,TabLayout.OnTabS
         when(v){
             binding.clScheduleColor -> dialogColor()
             binding.clRepeat -> dialogRepeat()
-            binding.tvStart -> dialogDateTime()
+            binding.tvStart -> dialogDateTime(0)
+            binding.tvEnd -> dialogDateTime(1)
         }
     }
 
-    private fun dialogDateTime() {
+    private fun dialogDateTime(type:Int) {
         val dialogBuilder = AlertDialog.Builder(this)
         view = DialogDatetimePickerBinding.inflate(layoutInflater)
         dialogBuilder.setView(view.root)
@@ -66,6 +68,15 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener,TabLayout.OnTabS
                 1->tab.text="시간"
             }
         }.attach()
+        val manager = SharedPreferencesManager(applicationContext)
+
+        view.btnOk.setOnClickListener {
+            if(type ==0){
+                binding.tvStart.text = manager.getDate() + manager.getTime()
+            }else
+                binding.tvEnd.text = manager.getDate() + manager.getTime()
+            alertDialog.dismiss()
+        }
     }
 
     private fun dialogColor() {

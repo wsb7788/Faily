@@ -35,6 +35,9 @@ class SharedPreferencesManager(private val context: Context){
     private fun getTokenPref() : SharedPreferences{
         return context.getSharedPreferences("token",Context.MODE_PRIVATE)
     }
+    private fun getInstantPref() : SharedPreferences{
+        return context.getSharedPreferences("instant",Context.MODE_PRIVATE)
+    }
 
     private fun getToken():String{
         val pref = getTokenPref()
@@ -149,5 +152,32 @@ class SharedPreferencesManager(private val context: Context){
     fun getChatCode():String{
         val pref = getUserInfoPref()
         return pref.getString("chat_code","")!!
+    }
+
+    fun saveDate(date: String) {
+        val pref = getInstantPref()
+        val edit = pref.edit()
+        edit.putString("date",date)
+        edit.apply()
+    }
+    fun saveTime(hour:Int, minute:Int) {
+        val pref = getInstantPref()
+        val edit = pref.edit()
+        if(hour>12){
+            edit.putString("time"," 오후 ${hour-12}:${minute}")
+            edit.apply()
+            return
+        }
+        edit.putString("time"," 오전 ${hour}:${minute}")
+        edit.apply()
+    }
+
+    fun getDate(): String {
+        val pref = getInstantPref()
+        return pref.getString("date","123")!!
+    }
+    fun getTime(): String {
+        val pref = getInstantPref()
+        return pref.getString("time","456")!!
     }
 }

@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.project.faily.databinding.FragmentTimeBinding
+import com.project.faily.util.SharedPreferencesManager
 
 
-class TimeFragment : Fragment() {
+class TimeFragment: Fragment() {
 
     private var _binding: FragmentTimeBinding? = null
     private val binding get() = _binding!!
@@ -20,12 +21,13 @@ class TimeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
        _binding = FragmentTimeBinding.inflate(inflater, container, false)
-
-
+        val manager = SharedPreferencesManager(requireContext())
+        manager.saveTime(binding.time.hour,binding.time.minute)
+        binding.time.setOnTimeChangedListener { view, hourOfDay, minute ->
+            manager.saveTime(hourOfDay,minute)
+        }
 
         return binding.root
     }
-
-
 
 }
