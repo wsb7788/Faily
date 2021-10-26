@@ -12,10 +12,12 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.project.faily.R
+import com.project.faily.data.entities.Answer
 import com.project.faily.data.remote.home.HomeListener
 import com.project.faily.data.remote.question.QuestionListener
 import com.project.faily.databinding.FragmentHomeBinding
 import com.project.faily.databinding.FragmentQuestionBinding
+import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -41,21 +43,17 @@ class QuestionFragment : Fragment(), QuestionListener {
 
         viewPagerInit()
 
+
         return binding.root
     }
 
     private fun viewPagerInit() {
         questionAdapter = QuestionAdapter()
-        val questionList= ArrayList<QuestionModel>()
+        viewModel.recentQuestionLoad()
 
-
-        for(i in 0..10){
-            questionList.add(QuestionModel("앙기모띠","ㅁㄴㅇㄻㄴㅇㄹ", isAndswered = false, isToday = false))
-        }
 
         binding.vpQuestion.adapter = questionAdapter
-        questionAdapter.submitList(questionList)
-        questionAdapter.notifyDataSetChanged()
+
         binding.vpQuestion.clipToPadding = false
         binding.vpQuestion.clipChildren = false
         binding.vpQuestion.offscreenPageLimit = 3
@@ -78,6 +76,22 @@ class QuestionFragment : Fragment(), QuestionListener {
 
         binding.vpQuestion.setPageTransformer(compositePageTransformer)
 
+    }
+
+    override fun onLoadFailure(message: String) {
+        requireContext().toast(message)
+    }
+
+    override fun onLoadSuccess(result: ArrayList<Answer>) {
+        val questionList= ArrayList<QuestionModel>()
+        for(i in 0 until result.size) {
+            questionList.add(QuestionModel(result[i].question,result[i].date, isAndswered = result[i].isAnswered, isToday = false))
+        }
+
+
+
+        questionAdapter.submitList(questionList)
+        questionAdapter.notifyDataSetChanged()
     }
 
 

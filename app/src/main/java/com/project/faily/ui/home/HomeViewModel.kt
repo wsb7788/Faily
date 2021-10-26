@@ -9,7 +9,7 @@ import com.project.faily.data.remote.home.HomeListener
 import com.project.faily.data.repository.home.HomeRepository
 import com.project.faily.util.Coroutines
 
-class HomeViewModel(val repository: HomeRepository): ViewModel(){
+class HomeViewModel(private val repository: HomeRepository): ViewModel(){
 
     var homeListener: HomeListener? = null
 
