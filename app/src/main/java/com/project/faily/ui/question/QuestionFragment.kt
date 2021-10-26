@@ -6,16 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.project.faily.R
 import com.project.faily.data.entities.Answer
-import com.project.faily.data.remote.home.HomeListener
 import com.project.faily.data.remote.question.QuestionListener
-import com.project.faily.databinding.FragmentHomeBinding
 import com.project.faily.databinding.FragmentQuestionBinding
 import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -84,9 +79,11 @@ class QuestionFragment : Fragment(), QuestionListener {
 
     override fun onLoadSuccess(result: ArrayList<Answer>) {
         val questionList= ArrayList<QuestionModel>()
-        for(i in 0 until result.size) {
-            questionList.add(QuestionModel(result[i].question,result[i].date, isAndswered = result[i].isAnswered, isToday = false))
+        for(i in 0 until result.size-1) {
+            questionList.add(QuestionModel(result[i].question,result[i].date, isAnswered = result[i].isAnswered))
         }
+        questionList.add(QuestionModel(result[result.size-1].question,result[result.size-1].date,result[result.size-1].isAnswered,true))
+
 
 
 

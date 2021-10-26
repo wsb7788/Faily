@@ -1,8 +1,8 @@
 package com.project.faily.ui.question
 
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.recyclerview.widget.RecyclerView
-import com.project.faily.R
-import com.project.faily.databinding.LayoutRecyclerHomeFamilyBinding
 import com.project.faily.databinding.SlideItemQuestionBinding
 
 class QuestionViewHolder(val binding: SlideItemQuestionBinding): RecyclerView.ViewHolder(binding.root) {
@@ -10,6 +10,13 @@ class QuestionViewHolder(val binding: SlideItemQuestionBinding): RecyclerView.Vi
     fun bind(questionModel: QuestionModel){
         binding.tvTitle.text = questionModel.title
         binding.tvDate.text = questionModel.date
-
+        if(questionModel.isAnswered){
+            binding.clAnswer.visibility = VISIBLE
+        }else
+            binding.clAnswer.visibility = INVISIBLE
+        if(questionModel.isToday!!){
+            binding.ivBookmark.visibility = VISIBLE
+        }else
+            binding.ivBookmark.visibility = INVISIBLE
     }
 }
