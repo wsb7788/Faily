@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface QuestionAllService {
 
 
-    @POST("/allQuestion/")
+    @GET("/allQuestion/")
     suspend fun allQuestion(
     ): Response<AllQuestionResponse>
 

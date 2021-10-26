@@ -5,11 +5,11 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface QuestionService {
-    @POST("/todayQuestion/")
+    @GET("/todayQuestion/")
     suspend fun todayQuestion(
     ): Response<TodayQuestionResponse>
 
-    @POST("/allQuestion/")
+    @GET("/allQuestion/")
     suspend fun allQuestion(
     ): Response<AllQuestionResponse>
 }
