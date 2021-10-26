@@ -71,6 +71,7 @@ class QuestionFragment : Fragment(), QuestionListener {
 
         binding.vpQuestion.setPageTransformer(compositePageTransformer)
 
+
     }
 
     override fun onLoadFailure(message: String) {
@@ -89,6 +90,7 @@ class QuestionFragment : Fragment(), QuestionListener {
 
         questionAdapter.submitList(questionList)
         questionAdapter.notifyDataSetChanged()
+        binding.vpQuestion.setCurrentItem(questionAdapter.itemCount,false)
     }
 
 
