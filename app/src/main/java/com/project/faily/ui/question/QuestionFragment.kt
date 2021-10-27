@@ -8,6 +8,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.ViewPager2
@@ -28,6 +29,7 @@ class QuestionFragment : Fragment(), QuestionListener {
 
 
     private lateinit var questionAdapter:QuestionAdapter
+    private lateinit var answerProfileAdapter:AnswerProfileAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +39,12 @@ class QuestionFragment : Fragment(), QuestionListener {
         binding.viewModel = viewModel
         viewModel.questionListener = this
 
+
+        answerProfileAdapter = AnswerProfileAdapter()
+        binding.rcvProfile.apply {
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            adapter = answerProfileAdapter
+        }
 
 
         viewPagerInit()
@@ -91,12 +99,7 @@ class QuestionFragment : Fragment(), QuestionListener {
 
         binding.vpQuestion.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
-
                 showAnswer(result[position])
-
-
-
-
                 super.onPageSelected(position)
             }
         })
@@ -109,19 +112,25 @@ class QuestionFragment : Fragment(), QuestionListener {
 
     private fun showAnswer(answer: Answer) {
 
-        when(answer.answerInfo.size-1){
+        when(answer.answerInfo.size){
             0 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_0)
             1 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_1)
             2 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_2)
             3 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_3)
+            4 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_4)
         }
+
+
+        val answerProfileList = ArrayList<AnswerProfileModel>()
 
 
         if(answer.isAnswered){
             binding.clMy.visibility = VISIBLE
             for(i in 0 until answer.answerInfo.size){
-                if(answer.answerInfo[i].user_name == "원승빈")
+                answerProfileList.add(AnswerProfileModel(answer.answerInfo[i].user_image))
+                if(answer.answerInfo[i].user_name == "원승빈") {
                     binding.tvMyAnswer.text = answer.answerInfo[i].answer
+                }
             }
         }else
             binding.clMy.visibility = GONE
@@ -129,6 +138,7 @@ class QuestionFragment : Fragment(), QuestionListener {
             binding.clFamily.visibility = VISIBLE
             binding.clNo.visibility = GONE
             for(i in 0 until answer.answerInfo.size){
+
                 if(answer.answerInfo[i].user_name == "정수빈"){
                     binding.tvPerson1.text = "정수빈의 답변"
                     binding.tvPerson1Answer.text = answer.answerInfo[i].answer
@@ -147,6 +157,9 @@ class QuestionFragment : Fragment(), QuestionListener {
             binding.clNo.visibility = VISIBLE
         }
 
+        answerProfileAdapter.clearList()
+        answerProfileAdapter.submitList(answerProfileList)
+        answerProfileAdapter.notifyDataSetChanged()
     }
 
 
