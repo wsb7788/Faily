@@ -11,9 +11,9 @@ class QuestionViewHolder(val binding: SlideItemQuestionBinding): RecyclerView.Vi
         binding.tvTitle.text = questionModel.title
         binding.tvDate.text = questionModel.date
         if(questionModel.isAnswered){
-            binding.clAnswer.visibility = VISIBLE
-        }else
             binding.clAnswer.visibility = INVISIBLE
+        }else
+            binding.clAnswer.visibility = VISIBLE
         if(questionModel.isToday!!){
             binding.ivBookmark.visibility = VISIBLE
         }else

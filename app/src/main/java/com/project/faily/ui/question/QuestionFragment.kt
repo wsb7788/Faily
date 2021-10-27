@@ -4,11 +4,14 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.project.faily.R
 import com.project.faily.data.entities.Answer
 import com.project.faily.data.remote.question.QuestionListener
 import com.project.faily.databinding.FragmentQuestionBinding
@@ -72,6 +75,7 @@ class QuestionFragment : Fragment(), QuestionListener {
         binding.vpQuestion.setPageTransformer(compositePageTransformer)
 
 
+
     }
 
     override fun onLoadFailure(message: String) {
@@ -85,12 +89,64 @@ class QuestionFragment : Fragment(), QuestionListener {
         }
         questionList.add(QuestionModel(result[result.size-1].question,result[result.size-1].date,result[result.size-1].isAnswered,true))
 
+        binding.vpQuestion.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
 
+                showAnswer(result[position])
+
+
+
+
+                super.onPageSelected(position)
+            }
+        })
 
 
         questionAdapter.submitList(questionList)
         questionAdapter.notifyDataSetChanged()
         binding.vpQuestion.setCurrentItem(questionAdapter.itemCount,false)
+    }
+
+    private fun showAnswer(answer: Answer) {
+
+        when(answer.answerInfo.size-1){
+            0 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_0)
+            1 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_1)
+            2 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_2)
+            3 -> binding.ivAnswerPerson.setImageResource(R.drawable.ic_answer_person_3)
+        }
+
+
+        if(answer.isAnswered){
+            binding.clMy.visibility = VISIBLE
+            for(i in 0 until answer.answerInfo.size){
+                if(answer.answerInfo[i].user_name == "원승빈")
+                    binding.tvMyAnswer.text = answer.answerInfo[i].answer
+            }
+        }else
+            binding.clMy.visibility = GONE
+        if(answer.allAnswered){
+            binding.clFamily.visibility = VISIBLE
+            binding.clNo.visibility = GONE
+            for(i in 0 until answer.answerInfo.size){
+                if(answer.answerInfo[i].user_name == "정수빈"){
+                    binding.tvPerson1.text = "정수빈의 답변"
+                    binding.tvPerson1Answer.text = answer.answerInfo[i].answer
+                }
+                if(answer.answerInfo[i].user_name == "장나연") {
+                    binding.tvPerson2.text = "장나연의 답변"
+                    binding.tvPerson2Answer.text = answer.answerInfo[i].answer
+                }
+                if(answer.answerInfo[i].user_name == "구본의") {
+                    binding.tvPerson3.text = "구본의의 답변"
+                    binding.tvPerson3Answer.text = answer.answerInfo[i].answer
+                }
+            }
+        }else{
+            binding.clFamily.visibility = GONE
+            binding.clNo.visibility = VISIBLE
+        }
+
     }
 
 
