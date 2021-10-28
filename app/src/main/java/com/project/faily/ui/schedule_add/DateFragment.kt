@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.project.faily.ApplicationClass
 import com.project.faily.R
 import com.project.faily.data.remote.home.HomeListener
 import com.project.faily.databinding.FragmentDateBinding
 import com.project.faily.databinding.FragmentHomeBinding
 import com.project.faily.util.SharedPreferencesManager
+import com.project.faily.util.getWeekDay
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,22 +50,8 @@ class DateFragment : Fragment() {
     }
 
     private fun getDayOfWeek(year: Int, month: Int, dayOfMonth: Int):String {
-        val date = "${binding.date.year}.${binding.date.month + 1}.${binding.date.dayOfMonth}"
-
-        val dateFormat = SimpleDateFormat("yyyy.MM.dd")
-        val cal = Calendar.getInstance()
-        cal.time = dateFormat.parse(date)!!
-        return when(cal.get(Calendar.DAY_OF_WEEK)){
-            1->"일"
-            2->"월"
-            3->"화"
-            4->"수"
-            5->"목"
-            6->"금"
-            7->"토"
-            else -> ""
-        }
-
+        val date = "${binding.date.year}-${binding.date.month + 1}-${binding.date.dayOfMonth}"
+        return  requireContext().getWeekDay(date)
 
     }
 

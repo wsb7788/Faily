@@ -13,8 +13,11 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.project.faily.R
+import com.project.faily.data.remote.home.HomeInfo
 import com.project.faily.data.remote.home.HomeListener
+import com.project.faily.data.remote.home.HomeResponse
 import com.project.faily.databinding.FragmentHomeBinding
+import com.project.faily.util.getWeekDay
 import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
@@ -50,14 +53,9 @@ class HomeFragment : Fragment(), HomeListener {
         recyclerInit()
         viewPagerInit()
         viewModel.callQuestion()
+        //viewModel.homeCall()
 
-        val list = ArrayList<ProfileModel>()
-        for(i in 1..4){
-            val model = ProfileModel("승뷘",70,"ㅁㄴㅇ")
-            list.add(model)
-        }
-        profileRecyclerAdapter.submitList(list)
-        profileRecyclerAdapter.notifyDataSetChanged()
+
 
         val list2 = ArrayList<PresentModel>()
         for(i in 1..4){
@@ -114,6 +112,23 @@ class HomeFragment : Fragment(), HomeListener {
 
     override fun onFailure(message: String) {
         requireContext().toast(message)
+    }
+
+    override fun onHomeCallSuccess(result: HomeInfo) {
+        binding.tvToolbar.text = result.user_name
+
+        val list = ArrayList<ProfileModel>()
+        for(i in 0 until result.familyList.size){
+            val model = ProfileModel(result.familyList[i].user_name,result.familyList[i].user_bonding.toInt(),result.familyList[i].user_mood,result.familyList[i].user_image)
+            list.add(model)
+        }
+        profileRecyclerAdapter.submitList(list)
+        profileRecyclerAdapter.notifyDataSetChanged()
+
+        binding.tvCalendarDay.text = result.today.substring(7)
+      //  binding.tvCalendarWeekday.text = requireContext().getWeekDay(result.today)
+
+
     }
 
 

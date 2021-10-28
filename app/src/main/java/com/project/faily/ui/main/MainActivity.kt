@@ -33,6 +33,7 @@ class MainActivity : BaseActivity(), MainListener, NavigationBarView.OnItemSelec
         binding.bnv.menu.getItem(2).isEnabled = false
         showTabHome()
 
+
         binding.bnv.setOnItemSelectedListener(this)
         binding.btnHome.setOnClickListener(this)
     }

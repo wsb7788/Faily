@@ -56,4 +56,23 @@ class HomeViewModel(private val repository: HomeRepository, private val sharedPr
         }
     }
 
+    fun homeCall() {
+        Coroutines.main {
+
+            try{
+
+                val response = repository.home()
+
+                if (response.isSuccess){
+                    homeListener!!.onHomeCallSuccess(response.result)
+                    return@main
+                }
+                homeListener!!.onFailure(response.message)
+
+            }catch (e:Exception){
+                homeListener!!.onFailure(e.message!!)
+            }
+        }
+    }
+
 }
