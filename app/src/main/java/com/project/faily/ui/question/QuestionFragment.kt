@@ -125,12 +125,13 @@ class QuestionFragment : Fragment(), QuestionListener ,QuestionAdapter.OnItemCli
 
 
         val answerProfileList = ArrayList<AnswerProfileModel>()
-
+        for(i in 0 until answer.answerInfo.size){
+            answerProfileList.add(AnswerProfileModel(answer.answerInfo[i].user_image))
+        }
 
         if(answer.isAnswered){
             binding.clMy.visibility = VISIBLE
             for(i in 0 until answer.answerInfo.size){
-                answerProfileList.add(AnswerProfileModel(answer.answerInfo[i].user_image))
                 if(answer.answerInfo[i].user_name == "원승빈") {
                     binding.tvMyAnswer.text = answer.answerInfo[i].answer
                 }
