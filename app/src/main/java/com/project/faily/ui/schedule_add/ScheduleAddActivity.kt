@@ -145,6 +145,14 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener,TabLayout.OnTabS
     override fun onTabReselected(tab: TabLayout.Tab?) {
     }
 
+    override fun onFailure(message: String) {
+        applicationContext.toast(message)
+    }
+
+    override fun onSuccess(message: String) {
+        applicationContext.toast(message)
+        finish()
+    }
 
 
 }
