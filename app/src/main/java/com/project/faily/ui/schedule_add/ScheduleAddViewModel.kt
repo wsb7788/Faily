@@ -8,13 +8,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.faily.ApplicationClass
 import com.project.faily.data.remote.schedule_add.ScheduleAddListener
+import com.project.faily.data.repository.schedule_add.ScheduleAddRepository
 import com.project.faily.util.Coroutines
 import com.project.faily.util.getWeekDay
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScheduleAddViewModel: ViewModel(){
+class ScheduleAddViewModel(private val repository: ScheduleAddRepository): ViewModel(){
 
     var scheduleAddListener:ScheduleAddListener? = null
 

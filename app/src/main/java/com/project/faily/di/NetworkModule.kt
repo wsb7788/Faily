@@ -7,6 +7,7 @@ import com.project.faily.data.remote.home.HomeService
 import com.project.faily.data.remote.login.LoginService
 import com.project.faily.data.remote.question.QuestionService
 import com.project.faily.data.remote.qustion_all.QuestionAllService
+import com.project.faily.data.remote.schedule_add.ScheduleAddService
 import com.project.faily.data.remote.tutorial_insert.TutorialInsertService
 import com.project.faily.data.remote.tutorial_invite.TutorialInviteService
 import com.project.faily.util.SharedPreferencesManager
@@ -66,6 +67,8 @@ val networkModule: Module = module {
         retrofit.create(QuestionAllService::class.java)
     fun provideAnswerService(retrofit: Retrofit): AnswerService =
         retrofit.create(AnswerService::class.java)
+    fun provideScheduleAddService(retrofit: Retrofit): ScheduleAddService =
+        retrofit.create(ScheduleAddService::class.java)
 
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
@@ -79,6 +82,7 @@ val networkModule: Module = module {
     single { provideQuestionService(get()) }
     single { provideQuestionAllService(get()) }
     single { provideAnswerService(get()) }
+    single { provideScheduleAddService(get()) }
 
 }
 

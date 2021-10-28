@@ -6,6 +6,7 @@ import com.project.faily.data.repository.home.HomeRepository
 import com.project.faily.data.repository.login.LoginRepository
 import com.project.faily.data.repository.question.QuestionRepository
 import com.project.faily.data.repository.question_all.QuestionAllRepository
+import com.project.faily.data.repository.schedule_add.ScheduleAddRepository
 import com.project.faily.data.repository.tutorial_insert.TutorialInsertRepository
 import com.project.faily.data.repository.tutorial_invite.TutorialInviteRepository
 import org.koin.dsl.module
@@ -20,4 +21,5 @@ val repositoryModule = module {
     single { QuestionRepository(get()) }
     single { QuestionAllRepository(get()) }
     single { AnswerRepository(get()) }
+    single { ScheduleAddRepository(get()) }
 }
