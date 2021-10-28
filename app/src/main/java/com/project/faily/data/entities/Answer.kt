@@ -5,7 +5,7 @@ data class Answer(
     val question: String,
     val isAnswered: Boolean,
     val allAnswered: Boolean,
-    val question_Index: Int,
+    val question_index: Int,
     val answerInfo:ArrayList<AnswerInfo>
 )
 data class AnswerInfo(

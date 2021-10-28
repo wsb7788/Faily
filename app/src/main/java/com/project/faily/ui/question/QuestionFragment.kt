@@ -1,5 +1,6 @@
 package com.project.faily.ui.question
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,12 +17,13 @@ import com.project.faily.R
 import com.project.faily.data.entities.Answer
 import com.project.faily.data.remote.question.QuestionListener
 import com.project.faily.databinding.FragmentQuestionBinding
+import com.project.faily.ui.answer.AnswerActivity
 import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
 
-class QuestionFragment : Fragment(), QuestionListener {
+class QuestionFragment : Fragment(), QuestionListener ,QuestionAdapter.OnItemClickListener{
 
     private var _binding: FragmentQuestionBinding? = null
     private val binding get() = _binding!!
@@ -49,6 +51,7 @@ class QuestionFragment : Fragment(), QuestionListener {
 
         viewPagerInit()
 
+        questionAdapter.setItemClickListener(this)
 
         return binding.root
     }
@@ -93,9 +96,9 @@ class QuestionFragment : Fragment(), QuestionListener {
     override fun onLoadSuccess(result: ArrayList<Answer>) {
         val questionList= ArrayList<QuestionModel>()
         for(i in 0 until result.size-1) {
-            questionList.add(QuestionModel(result[i].question,result[i].date, isAnswered = result[i].isAnswered))
+            questionList.add(QuestionModel(result[i].question,result[i].date, isAnswered = result[i].isAnswered,questionIndex = result[i].question_index))
         }
-        questionList.add(QuestionModel(result[result.size-1].question,result[result.size-1].date,result[result.size-1].isAnswered,true))
+        questionList.add(QuestionModel(result[result.size-1].question,result[result.size-1].date,result[result.size-1].isAnswered,true,questionIndex = result[result.size-1].question_index))
 
         binding.vpQuestion.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
@@ -160,6 +163,14 @@ class QuestionFragment : Fragment(), QuestionListener {
         answerProfileAdapter.clearList()
         answerProfileAdapter.submitList(answerProfileList)
         answerProfileAdapter.notifyDataSetChanged()
+    }
+
+    override fun onClick(v: View, position: Int) {
+        val index = questionAdapter.getQuestionIndex(position)
+        viewModel.saveQuestionInfo(index)
+        val intent = Intent(context,AnswerActivity::class.java)
+        intent.putExtra("title",questionAdapter.getQuestionTitle(position))
+        startActivity(intent)
     }
 
 

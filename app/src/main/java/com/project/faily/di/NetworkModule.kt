@@ -1,6 +1,7 @@
 package com.project.faily.di
 
 
+import com.project.faily.data.remote.answer.AnswerService
 import com.project.faily.data.remote.email_auth.EmailAuthService
 import com.project.faily.data.remote.home.HomeService
 import com.project.faily.data.remote.login.LoginService
@@ -63,6 +64,8 @@ val networkModule: Module = module {
         retrofit.create(QuestionService::class.java)
      fun provideQuestionAllService(retrofit: Retrofit): QuestionAllService =
         retrofit.create(QuestionAllService::class.java)
+    fun provideAnswerService(retrofit: Retrofit): AnswerService =
+        retrofit.create(AnswerService::class.java)
 
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
@@ -75,6 +78,7 @@ val networkModule: Module = module {
     single { provideHomeService(get()) }
     single { provideQuestionService(get()) }
     single { provideQuestionAllService(get()) }
+    single { provideAnswerService(get()) }
 
 }
 

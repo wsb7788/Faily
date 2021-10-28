@@ -1,5 +1,6 @@
 package com.project.faily.di
 
+import com.project.faily.data.repository.answer.AnswerRepository
 import com.project.faily.data.repository.email_auth.EmailAuthRepository
 import com.project.faily.data.repository.home.HomeRepository
 import com.project.faily.data.repository.login.LoginRepository
@@ -18,4 +19,5 @@ val repositoryModule = module {
     single { HomeRepository(get()) }
     single { QuestionRepository(get()) }
     single { QuestionAllRepository(get()) }
+    single { AnswerRepository(get()) }
 }

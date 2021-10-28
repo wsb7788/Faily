@@ -16,6 +16,7 @@ import com.project.faily.ui.gallery.GalleryFragment
 import com.project.faily.ui.home.HomeFragment
 import com.project.faily.ui.question.QuestionFragment
 import com.project.faily.ui.setting.SettingFragment
+import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AnswerActivity : BaseActivity(), AnswerListener {
@@ -30,8 +31,28 @@ class AnswerActivity : BaseActivity(), AnswerListener {
         binding.viewModel = viewModel
         viewModel.answerListener = this
 
+        val title = intent.getStringExtra("title")
+        binding.tvQuestion.text = title
 
+        binding.btnCancel.setOnClickListener(this)
+        binding.btnSave.setOnClickListener(this)
+    }
 
+    override fun onClick(v: View?) {
+
+        when(v){
+            binding.btnCancel -> finish()
+            binding.btnSave -> viewModel.checkAnswer()
+        }
+    }
+
+    override fun onFailure(message: String) {
+        applicationContext.toast(message)
+    }
+
+    override fun onSuccess(message: String) {
+        applicationContext.toast(message)
+        finish()
     }
 
 

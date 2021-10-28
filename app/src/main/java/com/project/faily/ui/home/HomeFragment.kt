@@ -46,6 +46,7 @@ class HomeFragment : Fragment(), HomeListener {
 
 
 
+        viewModel.startLogin()
         recyclerInit()
         viewPagerInit()
         viewModel.callQuestion()

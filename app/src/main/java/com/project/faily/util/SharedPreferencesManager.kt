@@ -180,4 +180,15 @@ class SharedPreferencesManager(private val context: Context){
         val pref = getInstantPref()
         return pref.getString("time","456")!!
     }
+
+    fun saveQuestionIndex(index:Int){
+        val pref = getInstantPref()
+        val edit = pref.edit()
+        edit.putInt("questionIndex",index)
+        edit.apply()
+    }
+    fun getQuestionIndex(): Int {
+        val pref = getInstantPref()
+        return pref.getInt("questionIndex",12312312)!!
+    }
 }

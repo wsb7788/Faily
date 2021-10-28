@@ -8,8 +8,9 @@ import androidx.lifecycle.ViewModel
 import com.project.faily.data.remote.question.QuestionListener
 import com.project.faily.data.repository.question.QuestionRepository
 import com.project.faily.util.Coroutines
+import com.project.faily.util.SharedPreferencesManager
 
-class QuestionViewModel(private val repository: QuestionRepository): ViewModel(){
+class QuestionViewModel(private val repository: QuestionRepository,private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
 
 
     var questionListener: QuestionListener? = null
@@ -33,5 +34,9 @@ class QuestionViewModel(private val repository: QuestionRepository): ViewModel()
             }
         }
 
+    }
+
+    fun saveQuestionInfo(questionIndex: Int) {
+        sharedPreferencesManager.saveQuestionIndex(questionIndex)
     }
 }
