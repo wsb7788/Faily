@@ -15,4 +15,8 @@ interface HomeService {
         @Body user: User
     ): Response<LoginResponse>
 
+    @GET("/Home/")
+    suspend fun home(
+    ): Response<HomeResponse>
+
 }

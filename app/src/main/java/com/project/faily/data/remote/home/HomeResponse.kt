@@ -16,4 +16,22 @@ data class LoginResponse(
     val jwt_token: String,
     val group_code: String)
 
+data class HomeResponse(
+    val isSuccess:Boolean,
+    val code: Int,
+    val message: String,
+    val result: ArrayList<HomeInfo>)
 
+data class HomeInfo(
+    val user_mood: String,
+    val familyList: ArrayList<FamilyList>,
+    val today_anniversary:String,
+    val user_name:String
+)
+
+data class FamilyList(
+    val user_name: String,
+    val user_bonding:Float,
+    val user_image: Byte,
+    val user_mood: String
+)
