@@ -2,14 +2,18 @@ package com.project.faily.ui.schedule_add
 
 import android.app.AlertDialog
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.CompoundButton
+import android.widget.Switch
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener
 import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.project.faily.ApplicationClass
@@ -20,6 +24,7 @@ import com.project.faily.databinding.DialogDatetimePickerBinding
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.calendar.CalendarFragment
 import com.project.faily.util.SharedPreferencesManager
+import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -37,10 +42,26 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener,TabLayout.OnTabS
         viewModel.scheduleAddListener = this
 
 
+        observeSwitch()
+
         binding.clScheduleColor.setOnClickListener(this)
         binding.clRepeat.setOnClickListener(this)
         binding.tvStart.setOnClickListener(this)
         binding.tvEnd.setOnClickListener(this)
+        binding.btnSave.setOnClickListener(this)
+        binding.btnCancel.setOnClickListener(this)
+    }
+
+    private fun observeSwitch() {
+        viewModel.allDay.observe(this, {
+            if(viewModel.allDay.value!!){
+                binding.tvStart.setTextColor(resources.getColor(R.color.grayscale_3))
+                binding.tvEnd.setTextColor(resources.getColor(R.color.grayscale_3))
+            }else{
+                binding.tvStart.setTextColor(resources.getColor(R.color.grayscale_1))
+                binding.tvEnd.setTextColor(resources.getColor(R.color.grayscale_1))
+            }
+        })
     }
 
     override fun onClick(v: View?) {
@@ -49,6 +70,8 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener,TabLayout.OnTabS
             binding.clRepeat -> dialogRepeat()
             binding.tvStart -> dialogDateTime(0)
             binding.tvEnd -> dialogDateTime(1)
+            binding.btnSave -> viewModel.saveSchedule()
+            binding.btnCancel -> finish()
         }
     }
 
@@ -121,5 +144,7 @@ class ScheduleAddActivity : BaseActivity(), ScheduleAddListener,TabLayout.OnTabS
 
     override fun onTabReselected(tab: TabLayout.Tab?) {
     }
+
+
 
 }

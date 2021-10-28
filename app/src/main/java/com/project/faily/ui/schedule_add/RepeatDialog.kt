@@ -43,18 +43,22 @@ class RepeatDialog(val value: String, val itemClick: (Int) -> Unit): BottomSheet
         }
         no.setOnClickListener {
             itemClick(0)
+            viewModel.repeat.value = "안함"
             dismiss()
         }
         week.setOnClickListener {
             itemClick(1)
+            viewModel.repeat.value = "매주"
             dismiss()
         }
         month.setOnClickListener {
             itemClick(2)
+            viewModel.repeat.value = "매월"
             dismiss()
         }
         year.setOnClickListener {
             itemClick(3)
+            viewModel.repeat.value = "매년"
             dismiss()
         }
 

@@ -26,18 +26,22 @@ class ColorDialog(val itemClick: (Int) -> Unit): BottomSheetDialogFragment() {
 
         anniversary.setOnClickListener {
             itemClick(0)
+            viewModel.category.value = "기념일"
             dialog?.dismiss()
         }
         family.setOnClickListener {
             itemClick(1)
+            viewModel.category.value = "가족"
             dialog?.dismiss()
         }
         personal.setOnClickListener {
             itemClick(2)
+            viewModel.category.value = "개인"
             dialog?.dismiss()
         }
         normal.setOnClickListener {
             itemClick(3)
+            viewModel.category.value = "생일"
             dialog?.dismiss()
         }
 
