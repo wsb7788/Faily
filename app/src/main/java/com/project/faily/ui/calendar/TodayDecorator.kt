@@ -11,9 +11,8 @@ import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 
-class TodayDecorator(context: Activity?, currentDay:CalendarDay) : DayViewDecorator {
+class TodayDecorator(context: Activity?) : DayViewDecorator {
     //오늘 날짜 색변경
-    var myDay = currentDay
 
     var date = CalendarDay.today()
 

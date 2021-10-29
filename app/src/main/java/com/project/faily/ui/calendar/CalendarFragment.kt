@@ -49,16 +49,6 @@ class CalendarFragment : BaseFragment(), CalendarListener {
         binding.calendar.setWeekDayTextAppearance(R.style.calendar_day)
         binding.calendar.setHeaderTextAppearance(R.style.calendar_title)
 
-        binding.calendar.setOnDateChangedListener { widget, date, selected ->
-            if(date.day == Calendar.getInstance().get(Calendar.DATE)){
-                binding.calendar.removeDecorators()
-                binding.calendar.addDecorator(SelectedDayDecorator(activity, date))
-            }else{
-                binding.calendar.removeDecorators()
-                binding.calendar.addDecorator(TodayDecorator(activity, CalendarDay.today()))
-            }
-
-        }
         binding.clAdd.setOnClickListener(this)
         return binding.root
     }
@@ -71,12 +61,12 @@ class CalendarFragment : BaseFragment(), CalendarListener {
             .setCalendarDisplayMode(CalendarMode.MONTHS)
             .commit()
 
-        binding.calendar.selectedDate = CalendarDay.today()
+       // binding.calendar.selectedDate = CalendarDay.today()
 
         binding.calendar.setTitleFormatter(DateFormatTitleFormatter(SimpleDateFormat("yyyy M월")))
 
-        val mydate=CalendarDay.from(2021,8,10)
-        binding.calendar.addDecorators(TodayDecorator(activity,mydate))
+
+
 
 
     }
@@ -97,6 +87,27 @@ class CalendarFragment : BaseFragment(), CalendarListener {
     }
 
     override fun onSuccess(list: ArrayList<CalendarList>) {
+        val event = ArrayList<CalendarDay>()
 
+        //binding.calendar.addDecorator(TodayDecorator(activity))
+        binding.calendar.selectedDate = CalendarDay.today()
+
+        for(i in 0 until list.size){
+            val date = CalendarDay.from(list[i].calendar_date.substring(0, 4).toInt(), list[i].calendar_date.substring(5, 7).toInt()-1, list[i].calendar_date.substring(8, 10).toInt())
+            event.add(date)
+        }
+        binding.calendar.addDecorators(TodayDecorator(activity),SelectedDayDecorator(activity, CalendarDay.today()),EventDecorator(event,requireContext()))
+
+        binding.calendar.setOnDateChangedListener { widget, date, selected ->
+
+            if(date.day == Calendar.getInstance().get(Calendar.DATE)){
+                binding.calendar.removeDecorators()
+                binding.calendar.addDecorators(TodayDecorator(activity),SelectedDayDecorator(activity, date),EventDecorator(event,requireContext()))
+            }else{
+                binding.calendar.removeDecorators()
+                binding.calendar.addDecorators(TodayDecorator(activity),EventDecorator(event,requireContext()))
+
+            }
+        }
     }
 }
