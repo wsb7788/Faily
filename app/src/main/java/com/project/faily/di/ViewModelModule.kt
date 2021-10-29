@@ -34,7 +34,7 @@ val viewModelModule = module {
     viewModel { SignUp2ViewModel(get()) }
     viewModel { HomeViewModel(get(),get()) }
     viewModel { MainViewModel() }
-    viewModel { CalendarViewModel() }
+    viewModel { CalendarViewModel(get()) }
     viewModel { QuestionViewModel(get(),get()) }
     viewModel { SettingViewModel() }
     viewModel { GalleryViewModel() }

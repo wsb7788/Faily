@@ -2,6 +2,7 @@ package com.project.faily.di
 
 
 import com.project.faily.data.remote.answer.AnswerService
+import com.project.faily.data.remote.calendar.CalendarService
 import com.project.faily.data.remote.email_auth.EmailAuthService
 import com.project.faily.data.remote.home.HomeService
 import com.project.faily.data.remote.login.LoginService
@@ -69,6 +70,8 @@ val networkModule: Module = module {
         retrofit.create(AnswerService::class.java)
     fun provideScheduleAddService(retrofit: Retrofit): ScheduleAddService =
         retrofit.create(ScheduleAddService::class.java)
+   fun provideCalendarService(retrofit: Retrofit): CalendarService =
+        retrofit.create(CalendarService::class.java)
 
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
@@ -83,6 +86,7 @@ val networkModule: Module = module {
     single { provideQuestionAllService(get()) }
     single { provideAnswerService(get()) }
     single { provideScheduleAddService(get()) }
+    single { provideCalendarService(get()) }
 
 }
 

@@ -11,16 +11,19 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.project.faily.ApplicationClass
 import com.project.faily.R
+import com.project.faily.data.remote.calendar.CalendarList
 import com.project.faily.data.remote.calendar.CalendarListener
 import com.project.faily.databinding.FragmentCalendarBinding
 import com.project.faily.ui.BaseFragment
 import com.project.faily.ui.schedule_add.ScheduleAddActivity
+import com.project.faily.util.toast
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.CalendarMode
 import com.prolificinteractive.materialcalendarview.format.DateFormatTitleFormatter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CalendarFragment : BaseFragment(), CalendarListener {
@@ -39,6 +42,7 @@ class CalendarFragment : BaseFragment(), CalendarListener {
         viewModel.calendarListener = this
 
 
+        viewModel.calendarLoad()
         calendarInit()
 
 
@@ -74,6 +78,7 @@ class CalendarFragment : BaseFragment(), CalendarListener {
         val mydate=CalendarDay.from(2021,8,10)
         binding.calendar.addDecorators(TodayDecorator(activity,mydate))
 
+
     }
 
     override fun onClick(v: View?) {
@@ -85,5 +90,13 @@ class CalendarFragment : BaseFragment(), CalendarListener {
 
             }
         }
+    }
+
+    override fun onFailure(message: String) {
+        requireContext().toast(message)
+    }
+
+    override fun onSuccess(list: ArrayList<CalendarList>) {
+
     }
 }

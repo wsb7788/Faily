@@ -1,6 +1,7 @@
 package com.project.faily.di
 
 import com.project.faily.data.repository.answer.AnswerRepository
+import com.project.faily.data.repository.calendar.CalendarRepository
 import com.project.faily.data.repository.email_auth.EmailAuthRepository
 import com.project.faily.data.repository.home.HomeRepository
 import com.project.faily.data.repository.login.LoginRepository
@@ -22,4 +23,5 @@ val repositoryModule = module {
     single { QuestionAllRepository(get()) }
     single { AnswerRepository(get()) }
     single { ScheduleAddRepository(get()) }
+    single { CalendarRepository(get()) }
 }
