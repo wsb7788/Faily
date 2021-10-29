@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.project.faily.ApplicationClass
 import com.project.faily.R
@@ -32,6 +33,7 @@ class CalendarFragment : BaseFragment(), CalendarListener {
     private val binding get() = _binding!!
     private val viewModel: CalendarViewModel by viewModel()
 
+    private lateinit var scheduleRecyclerAdapter: ScheduleRecyclerAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,12 +63,14 @@ class CalendarFragment : BaseFragment(), CalendarListener {
             .setCalendarDisplayMode(CalendarMode.MONTHS)
             .commit()
 
-       // binding.calendar.selectedDate = CalendarDay.today()
+        binding.calendar.setTitleFormatter(DateFormatTitleFormatter(SimpleDateFormat("yyyy년 M월")))
 
-        binding.calendar.setTitleFormatter(DateFormatTitleFormatter(SimpleDateFormat("yyyy M월")))
+        scheduleRecyclerAdapter = ScheduleRecyclerAdapter()
 
-
-
+        binding.rcvCalendar.apply {
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            adapter = scheduleRecyclerAdapter
+        }
 
 
     }
@@ -88,26 +92,40 @@ class CalendarFragment : BaseFragment(), CalendarListener {
 
     override fun onSuccess(list: ArrayList<CalendarList>) {
         val event = ArrayList<CalendarDay>()
-
-        //binding.calendar.addDecorator(TodayDecorator(activity))
+        val model = ArrayList<ScheduleModel>()
         binding.calendar.selectedDate = CalendarDay.today()
 
         for(i in 0 until list.size){
             val date = CalendarDay.from(list[i].calendar_date.substring(0, 4).toInt(), list[i].calendar_date.substring(5, 7).toInt()-1, list[i].calendar_date.substring(8, 10).toInt())
             event.add(date)
+
+            if(binding.calendar.selectedDate == date){
+                model.add(ScheduleModel(list[i].calendar_date,list[i].calendar_name,list[i].calendar_place,list[i].calendar_category))
+            }
         }
-        binding.calendar.addDecorators(TodayDecorator(activity),SelectedDayDecorator(activity, CalendarDay.today()),EventDecorator(event,requireContext()))
+        binding.calendar.addDecorators(SelectedDayDecorator(activity, CalendarDay.today()),EventDecorator(event,requireContext()))
+        scheduleRecyclerAdapter.submitList(model)
+        scheduleRecyclerAdapter.notifyDataSetChanged()
 
         binding.calendar.setOnDateChangedListener { widget, date, selected ->
-
             if(date.day == Calendar.getInstance().get(Calendar.DATE)){
                 binding.calendar.removeDecorators()
-                binding.calendar.addDecorators(TodayDecorator(activity),SelectedDayDecorator(activity, date),EventDecorator(event,requireContext()))
+                binding.calendar.addDecorators(SelectedDayDecorator(activity, date),EventDecorator(event,requireContext()))
             }else{
                 binding.calendar.removeDecorators()
                 binding.calendar.addDecorators(TodayDecorator(activity),EventDecorator(event,requireContext()))
-
             }
+            model.clear()
+            scheduleRecyclerAdapter.clearList()
+            for(i in 0 until list.size){
+                val date2 = CalendarDay.from(list[i].calendar_date.substring(0, 4).toInt(), list[i].calendar_date.substring(5, 7).toInt()-1, list[i].calendar_date.substring(8, 10).toInt())
+
+                if(date == date2){
+                    model.add(ScheduleModel(list[i].calendar_date,list[i].calendar_name,list[i].calendar_place,list[i].calendar_category))
+                }
+            }
+            scheduleRecyclerAdapter.submitList(model)
+            scheduleRecyclerAdapter.notifyDataSetChanged()
         }
     }
 }
