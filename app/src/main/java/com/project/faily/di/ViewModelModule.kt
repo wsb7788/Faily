@@ -2,6 +2,7 @@ package com.project.faily.di
 
 import com.project.faily.ui.answer.AnswerViewModel
 import com.project.faily.ui.calendar.CalendarViewModel
+import com.project.faily.ui.chat.ChatViewModel
 import com.project.faily.ui.email_auth.EmailAuthViewModel
 import com.project.faily.ui.gallery.GalleryViewModel
 import com.project.faily.ui.home.HomeViewModel
@@ -46,4 +47,5 @@ val viewModelModule = module {
     viewModel { SettingAppViewModel() }
     viewModel { TutorialInviteViewModel(get(),get()) }
     viewModel { TutorialInsertViewModel(get(),get()) }
+    viewModel { ChatViewModel() }
 }
