@@ -32,12 +32,12 @@ class ChatYouViewHolder(val binding: LayoutRecyclerChatYouBinding): RecyclerView
                 .circleCrop()
                 .placeholder(R.drawable.ic_emoji_exciting)
                 .into(binding.ivImage)
-            binding.tvImageTime.text = Date().toString()
+            binding.tvImageTime.text = Date().toString().substring(11,16)
         }else{
             binding.clText.visibility = VISIBLE
             binding.ivImage.visibility = GONE
             binding.text.text = chatModel.content
-            binding.tvTextTime.text = Date().toString()
+            binding.tvTextTime.text = Date().toString().substring(11,16)
         }
     }
 }

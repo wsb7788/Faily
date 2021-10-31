@@ -2,6 +2,6 @@ package com.project.faily.ui.chat
 
 import android.graphics.Bitmap
 
-class ChatModel(val isMe:Boolean, val name:String?, val content:String?, val profileImage:String?, val image:String?) {
+class ChatModel(val isMe:Boolean, val name:String?=null, val content:String?=null, val profileImage:String?=null, val image:String?=null) {
 
 }

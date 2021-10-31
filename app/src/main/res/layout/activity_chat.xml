@@ -56,9 +56,10 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
+                android:id="@+id/btn_expand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_chat_add"
+                android:src="@drawable/ic_chat_expand"
                 app:layout_constraintBottom_toBottomOf="@id/cl_chat_box"
                 app:layout_constraintEnd_toStartOf="@id/cl_chat_box"
                 app:layout_constraintStart_toStartOf="parent"
