@@ -34,6 +34,12 @@ class ChatActivity : BaseActivity(), ChatListener {
         viewModel.chatListener = this
 
 
+        viewInit()
+
+    }
+
+    private fun viewInit() {
+
     }
 
 }
