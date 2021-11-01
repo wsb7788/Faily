@@ -58,10 +58,11 @@ class HomeFragment : Fragment(), HomeListener {
 
 
         val list2 = ArrayList<PresentModel>()
-        for(i in 1..4){
-            val model = PresentModel(R.drawable.ic_present)
-            list2.add(model)
-        }
+        list2.add(PresentModel(R.drawable.present1))
+        list2.add(PresentModel(R.drawable.present2))
+        list2.add(PresentModel(R.drawable.present3))
+        list2.add(PresentModel(R.drawable.present4))
+        list2.add(PresentModel(R.drawable.present5))
         presentRecyclerAdapter.submitList(list2)
         presentRecyclerAdapter.notifyDataSetChanged()
 

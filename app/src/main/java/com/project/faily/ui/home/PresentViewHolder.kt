@@ -9,6 +9,6 @@ class PresentViewHolder(val binding: LayoutRecyclerHomePresentBinding): Recycler
 
     fun bind(presentModel: PresentModel){
 
-        binding.ivPresent.setImageResource(R.drawable.ic_present)
+        binding.ivPresent.setImageResource(presentModel.image)
     }
 }
