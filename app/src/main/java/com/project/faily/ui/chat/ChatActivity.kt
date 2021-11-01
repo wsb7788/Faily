@@ -29,6 +29,9 @@ class ChatActivity : BaseActivity(), ChatListener {
 
 
     private lateinit var chatRecyclerAdapter: ChatRecyclerAdapter
+    var asd = ArrayList<String>()
+
+    var index = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat)
@@ -38,7 +41,8 @@ class ChatActivity : BaseActivity(), ChatListener {
 
 
         viewInit()
-
+        asd.add("좋은하루!")
+        asd.add("김치찌개 먹는건 어때?")
 
         binding.btnBack.setOnClickListener(this)
         binding.btnSend.setOnClickListener(this)
@@ -77,11 +81,20 @@ class ChatActivity : BaseActivity(), ChatListener {
         val model = ArrayList<ChatModel>()
 
         model.add(ChatModel(true,content = binding.etMessage.text.toString()))
-        model.add(ChatModel(false,"구본의","어어 그래그래"))
+        model.add(ChatModel(false,name = "구본의", content = asd[index],index = index))
+        index++
         binding.etMessage.text = null
 
         chatRecyclerAdapter.submitList(model)
         chatRecyclerAdapter.notifyDataSetChanged()
+        if(index == 2){
+            model.clear()
+            model.add(ChatModel(true,content = "좋아! 김치찌개 먹고싶었는데 ~"))
+            model.add(ChatModel(true,image = "AS"))
+            chatRecyclerAdapter.submitList(model)
+            chatRecyclerAdapter.notifyDataSetChanged()
+        }
+
         binding.rcvChat.scrollToPosition(chatRecyclerAdapter.itemCount-1)
     }
 

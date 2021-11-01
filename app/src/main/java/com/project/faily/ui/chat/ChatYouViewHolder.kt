@@ -12,16 +12,40 @@ import com.project.faily.databinding.LayoutRecyclerHomePresentBinding
 import java.util.*
 
 class ChatYouViewHolder(val binding: LayoutRecyclerChatYouBinding): RecyclerView.ViewHolder(binding.root) {
-
     fun bind(chatModel: ChatModel){
 
-        binding.tvName.text = chatModel.name
-        Glide
-            .with(ApplicationClass.instance)
-            .load(chatModel.image)
-            .circleCrop()
-            .placeholder(R.drawable.ic_profile_basic)
-            .into(binding.ivProfile)
+
+        when(chatModel.index){
+            0->{
+                binding.tvName.text = "본의"
+                Glide
+                    .with(ApplicationClass.instance)
+                    .load(R.drawable.profile_be)
+                    .circleCrop()
+                    .placeholder(R.drawable.profile_be)
+                    .into(binding.ivProfile)
+            }
+            1->{
+                binding.tvName.text = "수빈"
+                Glide
+                    .with(ApplicationClass.instance)
+                    .load(R.drawable.profile_soobin)
+                    .circleCrop()
+                    .placeholder(R.drawable.profile_soobin)
+                    .into(binding.ivProfile)
+            }
+            2->{
+                binding.tvName.text = "나연"
+                Glide
+                    .with(ApplicationClass.instance)
+                    .load(R.drawable.profile_ny)
+                    .circleCrop()
+                    .placeholder(R.drawable.profile_ny)
+                    .into(binding.ivProfile)
+            }
+
+        }
+
 
         if(chatModel.content.isNullOrEmpty()){
             binding.clText.visibility = GONE
@@ -39,5 +63,6 @@ class ChatYouViewHolder(val binding: LayoutRecyclerChatYouBinding): RecyclerView
             binding.text.text = chatModel.content
             binding.tvTextTime.text = Date().toString().substring(11,16)
         }
+
     }
 }

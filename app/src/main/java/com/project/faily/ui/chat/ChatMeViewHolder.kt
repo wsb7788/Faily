@@ -24,8 +24,8 @@ class ChatMeViewHolder(val binding: LayoutRecyclerChatMeBinding): RecyclerView.V
             Glide
                 .with(ApplicationClass.instance)
                 .load(chatModel.image)
-                .circleCrop()
-                .placeholder(R.drawable.ic_emoji_exciting)
+
+                .placeholder(R.drawable.image_asdfasdf)
                 .into(binding.ivImage)
             binding.tvImageTime.text = Date().toString().substring(11,16)
         }else{
