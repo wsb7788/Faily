@@ -43,6 +43,7 @@ class HomeViewModel(private val repository: HomeRepository, private val sharedPr
                     sharedPreferencesManager.saveJwtToken(loginResponse.jwt_token)
                     if(loginResponse.group_code.isNotEmpty()){
                         sharedPreferencesManager.saveChatCode(loginResponse.group_code)
+                        homeCall()
                         return@main
                     }
                     homeListener!!.onFailure(loginResponse.message)

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
+import com.project.faily.ApplicationClass
 import com.project.faily.R
 import com.project.faily.data.entities.Answer
 import com.project.faily.data.remote.question.QuestionListener
@@ -43,6 +45,13 @@ class QuestionFragment : BaseFragment(), QuestionListener ,QuestionAdapter.OnIte
         binding.viewModel = viewModel
         viewModel.questionListener = this
 
+
+        Glide
+            .with(ApplicationClass.instance)
+            .load(R.drawable.profile_sb)
+            .circleCrop()
+            .placeholder(R.drawable.ic_profile_basic)
+            .into(binding.ivProfile)
 
         answerProfileAdapter = AnswerProfileAdapter()
         binding.rcvProfile.apply {

@@ -24,8 +24,9 @@ data class HomeResponse(
 
 data class HomeInfo(
     val user_mood: String,
+    val group_bonding: Float,
     val familyList: ArrayList<FamilyList>,
-    val today_anniversary:String,
+    val today_anniversary:ArrayList<TodayAnniversary>,
     val today: String,
     val user_name:String
 )
@@ -35,4 +36,7 @@ data class FamilyList(
     val user_bonding:Float,
     val user_image: String,
     val user_mood: String
+)
+data class TodayAnniversary(
+    val calendar_name: String
 )

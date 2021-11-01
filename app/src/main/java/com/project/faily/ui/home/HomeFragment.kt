@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
+import com.project.faily.ApplicationClass
 import com.project.faily.R
 import com.project.faily.data.remote.home.HomeInfo
 import com.project.faily.data.remote.home.HomeListener
@@ -45,7 +47,12 @@ class HomeFragment : Fragment(), HomeListener {
         )
 
 
-
+        Glide
+            .with(ApplicationClass.instance)
+            .load(R.drawable.profile_sb)
+            .circleCrop()
+            .placeholder(R.drawable.ic_profile_basic)
+            .into(binding.ivProfile)
 
 
 
@@ -53,7 +60,7 @@ class HomeFragment : Fragment(), HomeListener {
         recyclerInit()
         viewPagerInit()
         viewModel.callQuestion()
-        viewModel.homeCall()
+
 
 
 
@@ -116,7 +123,7 @@ class HomeFragment : Fragment(), HomeListener {
     }
 
     override fun onHomeCallSuccess(result: HomeInfo) {
-        binding.tvToolbar.text = result.user_name
+        binding.tvToolbar.text = result.user_name+"님의 가족"
 
         val list = ArrayList<ProfileModel>()
         for(i in 0 until result.familyList.size){
@@ -126,8 +133,12 @@ class HomeFragment : Fragment(), HomeListener {
         profileRecyclerAdapter.submitList(list)
         profileRecyclerAdapter.notifyDataSetChanged()
 
-        binding.tvCalendarDay.text = result.today.substring(7)
-      //  binding.tvCalendarWeekday.text = requireContext().getWeekDay(result.today)
+        binding.tvCalendarDay.text = "2"
+        binding.tvCalendarWeekday.text = "화"
+        binding.tvSchedule.text = "수빈이 생일"
+
+        binding.familyGraph.progress = result.group_bonding.toInt()
+        binding.tvFamilyGraphPercent.text = result.group_bonding.toString()+"%"
 
 
     }
