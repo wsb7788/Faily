@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="oo님의 가족"
+                android:text="원승빈님의 가족"
                 android:textColor="@color/grayscale_1"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -67,25 +67,195 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <com.king.view.arcseekbar.ArcSeekBar
-                    android:id="@+id/homeasd"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="148dp"
-                    app:arcMax="100"
-                    app:arcNormalColor="@color/white"
-                    app:arcProgress="80"
-                    app:arcShowLabel="false"
-                    app:arcShowThumb="false"
-                    app:arcStartAngle="180"
-                    app:arcStrokeWidth="40dp"
-                    app:arcSweepAngle="180"
-                    app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="30dp"
+                android:paddingTop="30dp">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_1"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    app:cardCornerRadius="15dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/iv_1"
+                        android:scaleType="centerCrop"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/grayscale_1"
+                    android:text="최근 항목"
+                    app:layout_constraintTop_toBottomOf="@id/cv_1"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_1"/>
+
+                <TextView
+                    android:id="@+id/tv_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/grayscale_4"
+                    android:text="32"
+                    app:layout_constraintTop_toBottomOf="@id/tv_1"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_1"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_2"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    app:cardCornerRadius="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:scaleType="centerCrop"
+                        android:layout_height="match_parent"
+                        android:id="@+id/iv_2"/>
+                </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_heart"
+                    app:layout_constraintStart_toStartOf="@id/cv_2"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_2"
+                    android:translationZ="10dp"
+                    android:layout_marginStart="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/grayscale_1"
+                    android:text="즐겨찾는 항목"
+                    app:layout_constraintTop_toBottomOf="@id/cv_2"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_2"/>
+
+                <TextView
+                    android:id="@+id/tv_22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/grayscale_4"
+                    android:text="6"
+                    app:layout_constraintTop_toBottomOf="@id/tv_2"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_2"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_3"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    app:cardCornerRadius="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_11"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:id="@+id/iv_3"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/grayscale_1"
+                    android:text="앨범1"
+                    app:layout_constraintTop_toBottomOf="@id/cv_3"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_3"/>
+
+                <TextView
+                    android:id="@+id/tv_33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/grayscale_4"
+                    android:text="15"
+                    app:layout_constraintTop_toBottomOf="@id/tv_3"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_3"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_4"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    app:cardCornerRadius="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_22"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:id="@+id/iv_4"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/grayscale_1"
+                    android:text="앨범2"
+                    app:layout_constraintTop_toBottomOf="@id/cv_4"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_4"/>
+
+                <TextView
+                    android:id="@+id/tv_44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/grayscale_4"
+                    android:text="8"
+                    app:layout_constraintTop_toBottomOf="@id/tv_4"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="@id/cv_4"/>
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_chat_expand"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_44"
+                    app:tint="@color/grayscale_2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="새로운 앨범"
+                    android:textColor="@color/grayscale_2"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintEnd_toStartOf="@id/imageView4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4"
+                    android:layout_marginEnd="5dp"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         </androidx.core.widget.NestedScrollView>
 
