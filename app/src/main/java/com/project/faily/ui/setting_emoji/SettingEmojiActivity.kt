@@ -21,6 +21,7 @@ import com.project.faily.data.remote.sign_up.SignUpListener
 import com.project.faily.databinding.*
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.home.EmojiAdapter
+import com.project.faily.ui.setting_emoji_add.SettingEmojiAddActivity
 import com.project.faily.ui.sign_up2.SignUp2Activity
 import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,6 +43,7 @@ class SettingEmojiActivity : BaseActivity(), SettingEmojiListener {
 
 
         binding.btnBack.setOnClickListener(this)
+        binding.btnEmojiAdd.setOnClickListener(this)
     }
 
     private fun recyclerInit() {
@@ -59,7 +61,13 @@ class SettingEmojiActivity : BaseActivity(), SettingEmojiListener {
     override fun onClick(v: View?) {
         when(v){
             binding.btnBack -> onBackPressed()
+            binding.btnEmojiAdd -> startSettingEmojiAdd()
         }
+    }
+
+    private fun startSettingEmojiAdd() {
+        val intent = Intent(applicationContext,SettingEmojiAddActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onFailure(message: String) {

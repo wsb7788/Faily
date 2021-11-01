@@ -15,6 +15,7 @@ import com.project.faily.ui.schedule_add.ScheduleAddViewModel
 import com.project.faily.ui.setting.SettingViewModel
 import com.project.faily.ui.setting_app.SettingAppViewModel
 import com.project.faily.ui.setting_emoji.SettingEmojiViewModel
+import com.project.faily.ui.setting_emoji_add.SettingEmojiAddViewModel
 import com.project.faily.ui.setting_profile.SettingProfileViewModel
 import com.project.faily.ui.sign_in.SignInViewModel
 import com.project.faily.ui.sign_up.SignUpViewModel
@@ -50,4 +51,5 @@ val viewModelModule = module {
     viewModel { TutorialInsertViewModel(get(),get()) }
     viewModel { ChatViewModel() }
     viewModel { SettingEmojiViewModel(get()) }
+    viewModel { SettingEmojiAddViewModel(get()) }
 }

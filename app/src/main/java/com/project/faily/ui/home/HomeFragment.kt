@@ -53,7 +53,7 @@ class HomeFragment : Fragment(), HomeListener {
         recyclerInit()
         viewPagerInit()
         viewModel.callQuestion()
-        //viewModel.homeCall()
+        viewModel.homeCall()
 
 
 

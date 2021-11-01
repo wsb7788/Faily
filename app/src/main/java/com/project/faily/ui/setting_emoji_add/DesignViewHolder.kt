@@ -15,15 +15,7 @@ import java.io.ByteArrayInputStream
 class DesignViewHolder(val binding: LayoutRecyclerDesignBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(designModel: DesignModel){
-        val stringProfileImage = designModel.image       //image는 서버로부터 받은 string형태의 byte code
-        val byteProfileImage = Base64.decode(stringProfileImage,0)
-        val inputStream = ByteArrayInputStream(byteProfileImage)
-        val image = BitmapFactory.decodeStream(inputStream)
-        Glide
-            .with(ApplicationClass.instance)
-            .load(image)
-            .placeholder(R.drawable.ic_profile_basic)
-            .into(binding.ivDesign)
+       binding.ivDesign.setImageResource(designModel.image!!)
 
     }
 }

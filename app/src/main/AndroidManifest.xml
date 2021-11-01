@@ -31,6 +31,7 @@
         <activity android:name=".ui.tutorial_invite.TutorialInviteActivity"/>
         <activity android:name=".ui.answer.AnswerActivity"/>
         <activity android:name=".ui.setting_emoji.SettingEmojiActivity"/>
+        <activity android:name=".ui.setting_emoji_add.SettingEmojiAddActivity"/>
         <activity android:name=".ui.chat.ChatActivity"/>
             <activity android:name=".ui.main.MainActivity"
                 >
