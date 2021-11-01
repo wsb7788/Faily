@@ -33,6 +33,7 @@
         <activity android:name=".ui.setting_emoji.SettingEmojiActivity"/>
         <activity android:name=".ui.setting_emoji_add.SettingEmojiAddActivity"/>
         <activity android:name=".ui.chat.ChatActivity"/>
+        <activity android:name=".ui.question_all.QuestionAllActivity"/>
             <activity android:name=".ui.main.MainActivity"
                 >
 

@@ -8,15 +8,16 @@ import androidx.lifecycle.ViewModel
 import com.project.faily.data.remote.question.QuestionListener
 import com.project.faily.data.remote.qustion_all.QuestionAllListener
 import com.project.faily.data.repository.question.QuestionRepository
+import com.project.faily.data.repository.question_all.QuestionAllRepository
 import com.project.faily.util.Coroutines
 import com.project.faily.util.SharedPreferencesManager
 
-class QuestionAllViewModel(private val repository: QuestionRepository, private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
+class QuestionAllViewModel(private val repository: QuestionAllRepository, private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
 
 
     var questionAllListener: QuestionAllListener? = null
 
-  /*  fun recentQuestionLoad() {
+    fun allQuestionLoad() {
 
         Coroutines.main {
 
@@ -25,18 +26,18 @@ class QuestionAllViewModel(private val repository: QuestionRepository, private v
                 val response = repository.allQuestion()
 
                 if(response.isSuccess){
-                    questionListener!!.onLoadSuccess(response.result)
+                    questionAllListener!!.onLoadSuccess(response.result)
                     return@main
                 }
-                questionListener!!.onLoadFailure(response.message)
+                questionAllListener!!.onLoadFailure(response.message)
 
             }catch (e:Exception){
-                questionListener!!.onLoadFailure(e.message!!)
+                questionAllListener!!.onLoadFailure(e.message!!)
             }
         }
 
     }
-*/
+
     fun saveQuestionInfo(questionIndex: Int) {
         sharedPreferencesManager.saveQuestionIndex(questionIndex)
     }

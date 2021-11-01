@@ -11,6 +11,7 @@ import com.project.faily.ui.main.MainViewModel
 import com.project.faily.ui.notice.NoticeViewModel
 import com.project.faily.ui.permission.PermissionViewModel
 import com.project.faily.ui.question.QuestionViewModel
+import com.project.faily.ui.question_all.QuestionAllViewModel
 import com.project.faily.ui.schedule_add.ScheduleAddViewModel
 import com.project.faily.ui.setting.SettingViewModel
 import com.project.faily.ui.setting_app.SettingAppViewModel
@@ -52,4 +53,5 @@ val viewModelModule = module {
     viewModel { ChatViewModel() }
     viewModel { SettingEmojiViewModel(get()) }
     viewModel { SettingEmojiAddViewModel(get()) }
+    viewModel { QuestionAllViewModel(get(),get())}
 }
