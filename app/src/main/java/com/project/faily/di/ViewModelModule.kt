@@ -49,5 +49,5 @@ val viewModelModule = module {
     viewModel { TutorialInviteViewModel(get(),get()) }
     viewModel { TutorialInsertViewModel(get(),get()) }
     viewModel { ChatViewModel() }
-    viewModel { SettingEmojiViewModel() }
+    viewModel { SettingEmojiViewModel(get()) }
 }

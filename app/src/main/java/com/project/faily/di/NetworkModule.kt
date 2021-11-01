@@ -10,6 +10,7 @@ import com.project.faily.data.remote.login.LoginService
 import com.project.faily.data.remote.question.QuestionService
 import com.project.faily.data.remote.qustion_all.QuestionAllService
 import com.project.faily.data.remote.schedule_add.ScheduleAddService
+import com.project.faily.data.remote.setting_emoji.SettingEmojiService
 import com.project.faily.data.remote.tutorial_insert.TutorialInsertService
 import com.project.faily.data.remote.tutorial_invite.TutorialInviteService
 import com.project.faily.util.SharedPreferencesManager
@@ -75,6 +76,8 @@ val networkModule: Module = module {
         retrofit.create(CalendarService::class.java)
     fun provideChatService(retrofit: Retrofit): ChatService =
         retrofit.create(ChatService::class.java)
+    fun provideSettingEmojiService(retrofit: Retrofit): SettingEmojiService =
+        retrofit.create(SettingEmojiService::class.java)
 
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
@@ -91,6 +94,7 @@ val networkModule: Module = module {
     single { provideScheduleAddService(get()) }
     single { provideCalendarService(get()) }
     single { provideChatService(get()) }
+    single { provideSettingEmojiService(get()) }
 
 }
 

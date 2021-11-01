@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.project.faily.R
 import com.project.faily.data.remote.login.LoginListener
 import com.project.faily.data.remote.setting_app.SettingAppListener
+import com.project.faily.data.remote.setting_emoji.Emoji
 import com.project.faily.data.remote.setting_emoji.SettingEmojiListener
 import com.project.faily.data.remote.setting_profile.SettingProfileListener
 import com.project.faily.data.remote.sign_up.SignUpListener
@@ -21,6 +22,7 @@ import com.project.faily.databinding.*
 import com.project.faily.ui.BaseActivity
 import com.project.faily.ui.home.EmojiAdapter
 import com.project.faily.ui.sign_up2.SignUp2Activity
+import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingEmojiActivity : BaseActivity(), SettingEmojiListener {
@@ -36,6 +38,7 @@ class SettingEmojiActivity : BaseActivity(), SettingEmojiListener {
         viewModel.settingEmojiListener = this
 
         recyclerInit()
+        viewModel.loadEmoji()
 
 
         binding.btnBack.setOnClickListener(this)
@@ -49,13 +52,7 @@ class SettingEmojiActivity : BaseActivity(), SettingEmojiListener {
             adapter = emojiAdapter
         }
 
-        val myModel = ArrayList<EmojiModel>()
 
-        for(i in 0..4){
-            myModel.add(EmojiModel(""))
-        }
-        emojiAdapter.submitList(myModel)
-        emojiAdapter.notifyDataSetChanged()
 
     }
 
@@ -63,6 +60,22 @@ class SettingEmojiActivity : BaseActivity(), SettingEmojiListener {
         when(v){
             binding.btnBack -> onBackPressed()
         }
+    }
+
+    override fun onFailure(message: String) {
+        applicationContext.toast(message)
+    }
+
+    override fun onSuccess(result: ArrayList<Emoji>) {
+        val myModel = ArrayList<EmojiModel>()
+
+
+
+        for(i in 0 until result.size){
+            myModel.add(EmojiModel(result[i].emoji))
+        }
+        emojiAdapter.submitList(myModel)
+        emojiAdapter.notifyDataSetChanged()
     }
 }
 
