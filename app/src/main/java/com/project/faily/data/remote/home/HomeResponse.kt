@@ -20,7 +20,7 @@ data class HomeResponse(
     val isSuccess:Boolean,
     val code: Int,
     val message: String,
-    val result: HomeInfo)
+    val result: ArrayList<HomeInfo>)
 
 data class HomeInfo(
     val user_mood: String,

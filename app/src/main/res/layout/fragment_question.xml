@@ -74,13 +74,22 @@
                     android:id="@+id/tv_show_all_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="모든 질문 보기 >"
+                    android:text="모든 질문 보기"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/grayscale_2"
+                    app:layout_constraintTop_toTopOf="@id/btn_show_all_question"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_show_all_question"
+                    app:layout_constraintEnd_toStartOf="@id/btn_show_all_question"/>
+                <ImageView
+                    android:id="@+id/btn_show_all_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_right"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginEnd="50dp"/>
+                    android:layout_marginEnd="50dp"
+                    app:tint="@color/grayscale_2" />
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/vp_question"

@@ -64,7 +64,7 @@ class HomeViewModel(private val repository: HomeRepository, private val sharedPr
                 val response = repository.home()
 
                 if (response.isSuccess){
-                    homeListener!!.onHomeCallSuccess(response.result)
+                    homeListener!!.onHomeCallSuccess(response.result[0])
                     return@main
                 }
                 homeListener!!.onFailure(response.message)

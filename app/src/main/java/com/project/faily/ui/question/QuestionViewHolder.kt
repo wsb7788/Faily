@@ -11,6 +11,7 @@ import com.project.faily.ui.answer.AnswerActivity
 class QuestionViewHolder(val binding: SlideItemQuestionBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(questionModel: QuestionModel){
+
         binding.tvTitle.text = questionModel.title
         binding.tvDate.text = questionModel.date
         if(questionModel.isAnswered){

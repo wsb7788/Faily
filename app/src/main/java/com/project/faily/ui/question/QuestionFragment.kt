@@ -17,13 +17,15 @@ import com.project.faily.R
 import com.project.faily.data.entities.Answer
 import com.project.faily.data.remote.question.QuestionListener
 import com.project.faily.databinding.FragmentQuestionBinding
+import com.project.faily.ui.BaseFragment
 import com.project.faily.ui.answer.AnswerActivity
+import com.project.faily.ui.question_all.QuestionAllActivity
 import com.project.faily.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
 
-class QuestionFragment : Fragment(), QuestionListener ,QuestionAdapter.OnItemClickListener{
+class QuestionFragment : BaseFragment(), QuestionListener ,QuestionAdapter.OnItemClickListener{
 
     private var _binding: FragmentQuestionBinding? = null
     private val binding get() = _binding!!
@@ -52,8 +54,20 @@ class QuestionFragment : Fragment(), QuestionListener ,QuestionAdapter.OnItemCli
         viewPagerInit()
 
         questionAdapter.setItemClickListener(this)
+        binding.btnShowAllQuestion.setOnClickListener(this)
 
         return binding.root
+    }
+
+    override fun onClick(v: View?) {
+        when(v){
+            binding.btnShowAllQuestion -> startQuestionAll()
+        }
+    }
+
+    private fun startQuestionAll() {
+        val intent = Intent(requireContext(), QuestionAllActivity::class.java)
+        startActivity(intent)
     }
 
     private fun viewPagerInit() {
@@ -126,7 +140,7 @@ class QuestionFragment : Fragment(), QuestionListener ,QuestionAdapter.OnItemCli
 
         val answerProfileList = ArrayList<AnswerProfileModel>()
         for(i in 0 until answer.answerInfo.size){
-            answerProfileList.add(AnswerProfileModel(answer.answerInfo[i].user_image))
+            answerProfileList.add(AnswerProfileModel(answer.answerInfo[i].user_name))
         }
 
         if(answer.isAnswered){
