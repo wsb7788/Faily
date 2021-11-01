@@ -26,6 +26,7 @@ class SettingEmojiAddActivity : BaseActivity(), SettingEmojiAddListener {
 
         recyclerInit()
         viewModel.loadEmoji()
+        binding.ivImage.setImageResource(R.drawable.image_asdfasdf_before)
 
 
         binding.btnBack.setOnClickListener(this)
