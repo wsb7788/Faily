@@ -36,6 +36,8 @@
         <activity android:name=".ui.question_all.QuestionAllActivity"/>
             <activity android:name=".ui.tutorial_invite.TutorialInviteActivity">
 
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
